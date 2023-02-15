@@ -18,7 +18,7 @@ const DropZone = () => {
         </p>
       </div>
       {/* Pass the selectect or dropped files as props */}
-      <FilePreview fileData={data} />
+      {/*<FilePreview fileData={data} />*/}
     </>
   );
 };
