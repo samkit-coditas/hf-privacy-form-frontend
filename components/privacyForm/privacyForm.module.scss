@@ -1,0 +1,155 @@
+.containerWrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  // background-color: #FAF5F5;
+  height: auto;
+  padding: 0 22rem 0 22rem;
+  margin-bottom: 4rem;
+
+  .rowWrapper {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+
+    .labelWrapper {
+      font-weight: 600;
+      margin: 0.2rem 0 0.2rem 0;
+      font-size: 1rem;
+    }
+
+    .selectWrapper {
+      height: 2rem;
+    }
+
+    .inputField {
+      height: 2rem;
+      &:focus {
+        box-shadow: 0 0 5px #0092E1;
+        padding: 3px 0px 3px 3px;
+        margin: 5px 1px 3px 0px;
+        border: 1px solid rgba(81, 203, 238, 1);
+        outline: none;
+      }
+    }
+
+    .textInputField {
+      height: 5rem;
+      &:focus {
+        box-shadow: 0 0 5px #0092E1;
+        padding: 3px 0px 3px 3px;
+        margin: 5px 1px 3px 0px;
+        border: 1px solid rgba(81, 203, 238, 1);
+        outline: none;
+      }
+    }
+
+    .requiredField {
+      color: red;
+      font-weight: bold;
+      margin-right: 0.2rem;
+    }
+  }
+
+}
+
+.errMsg {
+  font-size: 0.8rem;
+  color: red;
+  height: 0.2rem;
+  margin-top: 0.25rem;
+}
+
+.userTypeErr {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid red;
+
+  .userTypeBtn {
+    margin: 5px 2px 5px 2px;
+    width: 135px;
+    color: white;
+    background-color: #34613D;
+    font-size: .7rem;
+  }
+
+  .userInActiveBtn {
+    margin: 5px 2px 5px 2px;
+    font-weight: 500;
+    width: 135px;
+    color: #5E5E5E;
+    background-color: #F6F7F7;
+    font-size: .7rem;
+    border: 1px solid #5E5E5E;
+
+    &:hover {
+      border: 1px solid black;
+    }
+  }
+}
+
+.userTypeLayout {
+  display: flex;
+  flex-wrap: wrap;
+
+  .userTypeBtn {
+    margin: 5px 2px 5px 2px;
+    width: 135px;
+    color: white;
+    background-color: #34613D;
+    font-size: .7rem;
+  }
+
+  .userInActiveBtn {
+    margin: 5px 2px 5px 2px;
+    font-weight: 500;
+    width: 135px;
+    color: #5E5E5E;
+    background-color: #F6F7F7;
+    font-size: .7rem;
+    border: 1px solid #5E5E5E;
+
+    &:hover {
+      border: 1px solid black;
+    }
+  }
+}
+
+.recaptchaWrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.submitBtnWrapper {
+  display: flex;
+  justify-content: flex-end;
+
+  .submitBtn {
+    width: 100px;
+    color: white;
+    background-color: #79A979;
+    outline: none;
+    border-width: 0;
+    height: 2rem;
+    border-radius: 0.5rem;
+  }
+
+  .submitActiveBtn {
+    width: 100px;
+    color: white;
+    background-color: #34613D;
+    outline: none;
+    border-width: 0;
+    height: 2rem;
+    border-radius: 0.5rem;
+  }
+
+}
+
+.successMsg {
+  color: #34613D;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: flex-end;
+}

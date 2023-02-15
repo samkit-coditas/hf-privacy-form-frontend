@@ -1,0 +1,16 @@
+$navbarColor: rgb(44, 97, 69);
+
+.containerWrapper {
+  display: flex;
+  justify-content: center;
+  background-color: $navbarColor;
+  height: 100px;
+}
+
+.contentWrapper {
+  color: #F6F6F6;
+}
+
+.headingWrapper {
+  font-size: 4rem;
+}
