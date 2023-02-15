@@ -7,14 +7,11 @@ const DropZone = () => {
   const { localString } = useContext(LanguageContext)
 
   const [data, setData] = useState([]);
-  const handleFileSelect = (e) => {
-    return
-  };
 
   return (
     <>
       <div className={styles.dropzone}>
-        <input id="fileSelect" type="file" multiple className={styles.files} onChange={(e) => handleFileSelect(e)} />
+        <input id="fileSelect" type="file" multiple className={styles.files} />
         <label htmlFor="fileSelect">{localString["attachments"]}</label>
         <p className={styles.uploadMessage}>
           {localString["fileMsg"]}
