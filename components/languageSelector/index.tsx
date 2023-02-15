@@ -11,7 +11,7 @@ const LanguageSelector = () => {
 
   const [defaultTranslateLang, setTranslateLang] = useState('English')
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     let lang = e.split(",")
     setTranslateLang(lang[0]);
     setLanguage(lang[1]);

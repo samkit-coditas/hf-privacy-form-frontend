@@ -118,7 +118,7 @@ const PrivacyForm = () => {
     if (token) setCaptchaToken(token as string);
   };
 
-  const handleUserType = (userType) => {
+  const handleUserType = (userType: string) => {
     setUserTypeErr(false)
     userBtns.forEach((element, index) => {
       if(element.name === userType) {
@@ -151,7 +151,7 @@ const PrivacyForm = () => {
     })
   }
 
-  const handleRequestType = (requestType) => {
+  const handleRequestType = (requestType: string) => {
     setRequestTypeErr(false)
     if(formData.userType === "Employee" || formData.userType === "Job Applicant"){
       requestBtns.slice(0,5).forEach((element, index) => {
@@ -182,7 +182,7 @@ const PrivacyForm = () => {
     const response = await getUserDetails();
   }
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: any) => {
     if(formData.userType === ""){
       setUserTypeErr(true)
     } else {
@@ -247,7 +247,7 @@ const PrivacyForm = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <Row className={styles.rowWrapper}>
             <label className={styles.labelWrapper}><span className={styles.requiredField}>*</span>{localString["chooseEntity"]}</label>
-            <select {...register("entityName", { required: "This field is required", onChange: (e) => setFormData({...formData, entityName: e.target.value }) })} className={styles.selectWrapper}>
+            <select {...register("entityName", { required: "This field is required", onChange: (e: any) => setFormData({...formData, entityName: e.target.value }) })} className={styles.selectWrapper}>
               <option value="OneTrust">OneTrust</option>
               <option value="Convercent by OneTrust">Convercent by OneTrust</option>
               <option value="Planetly by OneTrust">Planetly by OneTrust</option>
@@ -286,7 +286,7 @@ const PrivacyForm = () => {
           {showCloud && (
             <Row className={styles.rowWrapper}>
               <label className={styles.labelWrapper}>{localString["cloudType"]}</label>
-              <select className={styles.selectWrapper} {...register("cloudType", { required: true, onChange: (e) => {setFormData({...formData, cloudType: e.target.value})} })}>
+              <select className={styles.selectWrapper} {...register("cloudType", { required: true, onChange: (e: any) => {setFormData({...formData, cloudType: e.target.value})} })}>
                 <option value="Privacy & Data Governance Cloud">Privacy & Data Governance Cloud</option>
                 <option value="GRC & Security Assurance Cloud">GRC & Security Assurance Cloud</option>
                 <option value="Ethics & Compliance Cloud">Ethics & Compliance Cloud</option>
@@ -299,7 +299,7 @@ const PrivacyForm = () => {
           )}
           <Row className={styles.rowWrapper}>
             <label className={styles.labelWrapper}><span className={styles.requiredField}>*</span>{localString["country"]}</label>
-            <select className={styles.selectWrapper} options={options} {...register("country", { required: "This field is required", onChange: (e) => setFormData({...formData, country: e.target.value }) })}>
+            <select className={styles.selectWrapper} options={options} {...register("country", { required: "This field is required", onChange: (e: any) => setFormData({...formData, country: e.target.value }) })}>
               <>
                 {countryLists?.map((country) => (
                   <option value={country.label}>{country.label}</option>
@@ -328,7 +328,7 @@ const PrivacyForm = () => {
           </Row>
           <Row className={styles.rowWrapper}>
               <label className={styles.labelWrapper}><span className={styles.requiredField}>*</span>{localString["firstName"]}</label>
-              <input className={styles.inputField} type="text" placeholder="" {...register("firstName", {required: "First Name is required", onChange: (e) => setFormData({...formData, firstName: e.target.value }), maxLength: 80})} />
+              <input className={styles.inputField} type="text" placeholder="" {...register("firstName", {required: "First Name is required", onChange: (e: any) => setFormData({...formData, firstName: e.target.value }), maxLength: 80})} />
               {errors.firstName ? (
                 <>
                   {errors.firstName.type === "required" && (
@@ -341,7 +341,7 @@ const PrivacyForm = () => {
           </Row>
           <Row className={styles.rowWrapper}>
             <label className={styles.labelWrapper}><span className={styles.requiredField}>*</span>{localString["lastName"]}</label>
-            <input className={styles.inputField} type="text" placeholder="" {...register("lastName", {required: "Last Name is required", onChange: (e) => setFormData({...formData, lastName: e.target.value }), maxLength: 100})} />
+            <input className={styles.inputField} type="text" placeholder="" {...register("lastName", {required: "Last Name is required", onChange: (e: any) => setFormData({...formData, lastName: e.target.value }), maxLength: 100})} />
             {errors.lastName ? (
               <>
                 {errors.lastName.type === "required" && (
@@ -360,7 +360,7 @@ const PrivacyForm = () => {
               placeholder="Email"
               {...register("email", {
                 required: "Email is required",
-                onChange: (e) => setFormData({...formData, email: e.target.value }),
+                onChange: (e: any) => setFormData({...formData, email: e.target.value }),
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
                   message: "Email is invalid"
@@ -387,28 +387,28 @@ const PrivacyForm = () => {
             <>
               <Row className={styles.rowWrapper}>
                 <label className={styles.labelWrapper}>{localString["jobtitle"]}</label>
-                <input className={styles.inputField} type="text" placeholder="" {...register("Your Job Title or Position Applied For", { onChange: (e) => setFormData({...formData, jobtitle: e.target.value }) })} />
+                <input className={styles.inputField} type="text" placeholder="" {...register("Your Job Title or Position Applied For", { onChange: (e: any) => setFormData({...formData, jobtitle: e.target.value }) })} />
               </Row>
               <Row className={styles.rowWrapper}>
                 <label className={styles.labelWrapper}>{localString["startDate"]}</label>
-                <input className={styles.inputField} type="date" placeholder="" {...register("Your Employment Start Date", { onChange: (e) => setFormData({...formData, employmentStartDate: e.target.value }) })} />
+                <input className={styles.inputField} type="date" placeholder="" {...register("Your Employment Start Date", { onChange: (e: any) => setFormData({...formData, employmentStartDate: e.target.value }) })} />
               </Row>
               <Row className={styles.rowWrapper}>
                 <label className={styles.labelWrapper}>{localString["endDate"]}</label>
-                <input className={styles.inputField} type="date" placeholder="" {...register("Your Employment End Date", { onChange: (e) => setFormData({...formData, employmentEndDate: e.target.value }) })} />
+                <input className={styles.inputField} type="date" placeholder="" {...register("Your Employment End Date", { onChange: (e: any) => setFormData({...formData, employmentEndDate: e.target.value }) })} />
               </Row>
             </>
           )}
           <Row className={styles.rowWrapper}>
             <label className={styles.labelWrapper}><span className={styles.requiredField}>*</span>{localString["requestDetails"]}</label>
-            <textarea className={styles.textInputField} placeholder="Request Details" {...register("Request Details", {required: true, onChange: (e) => setFormData({...formData, requestDetails: e.target.value }) })} />
+            <textarea className={styles.textInputField} placeholder="Request Details" {...register("Request Details", {required: true, onChange: (e: any) => setFormData({...formData, requestDetails: e.target.value }) })} />
           </Row>
           <Row>
             <FooterContent />
           </Row>
           <Row className={styles.rowWrapper}>
             <label className={styles.labelWrapper}>Please confirm your understanding of the above before submitting your request</label>
-            <select className={styles.selectWrapper} {...register("termsAggred", { required: true,  onChange: (e) => setFormData({...formData, termsAggred: e.target.value }) })}>
+            <select className={styles.selectWrapper} {...register("termsAggred", { required: true,  onChange: (e: any) => setFormData({...formData, termsAggred: e.target.value }) })}>
               <option value="true">I understand</option>
             </select>
           </Row>
