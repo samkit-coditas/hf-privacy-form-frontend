@@ -4,8 +4,7 @@ import styles from './page.module.scss'
 import { Container, Row, Col } from "react-bootstrap";
 import PrivacyForm from "components/privacyForm";
 import HeaderContent from "components/headerContent";
-import LanguageSelector from "components/LanguageSelector";
-
+import LanguageSelector from "components/languageSelector";
 
 export default function Home() {
   return (
