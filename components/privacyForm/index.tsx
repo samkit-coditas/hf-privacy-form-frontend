@@ -424,7 +424,7 @@ const PrivacyForm = () => {
           </Row>
           <Row className={styles.rowWrapper}>
             <Col>
-              <DragAndDrop formData={formData} setFormData={setFormData}/>
+              <DragAndDrop/>
             </Col>
           </Row>
           <Row className={styles.submitBtnWrapper}>

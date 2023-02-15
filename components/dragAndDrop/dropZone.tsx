@@ -3,16 +3,12 @@ import FilePreview from "./filePreview";
 import styles from "./dropZone.module.scss";
 import { LanguageContext } from '../../hoc/languageProvider';
 
-const DropZone = ({formData, setFormData}) => {
+const DropZone = () => {
   const { localString } = useContext(LanguageContext)
 
   const [data, setData] = useState([]);
   const handleFileSelect = (e) => {
-    let files = [...e.target.files];
-    setFormData({
-      ...formData,
-      attachment: files
-    })
+    return
   };
 
   return (
