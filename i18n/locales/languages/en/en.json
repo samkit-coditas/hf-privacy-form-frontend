@@ -32,5 +32,8 @@
   "noteDetailsThree": "For more details and information about how we use and protect your personal information, please visit our Privacy Overview and our Full Privacy Notice.",
   "attachments": "Attachments",
   "fileMsg": "Files larger than 4 MB are not supported",
-  "submit": "Submit"
+  "agreeTerms":"By ticking, you are confirming that you have read, understood and agree above things",
+  "submit": "Submit",
+  "requiredFieldError": "This field is required",
+  "invalidEmail": "Email is invalid"
 }

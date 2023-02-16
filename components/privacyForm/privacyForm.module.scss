@@ -17,28 +17,32 @@
     }
 
     .selectWrapper {
-      height: 2rem;
+      height: 3rem;
+      padding: 4px;
     }
 
     .inputField {
-      height: 2rem;
+      height: 3rem;
       &:focus {
-        box-shadow: 0 0 5px #0092E1;
+        // box-shadow: 0 0 3px #000000;
         padding: 3px 0px 3px 3px;
         margin: 5px 1px 3px 0px;
-        border: 1px solid rgba(81, 203, 238, 1);
+        border: 2px solid rgba(0, 0, 0, 1);
         outline: none;
+        border-radius: 0.15rem;
       }
     }
 
     .textInputField {
       height: 5rem;
+      padding: 0.7rem;
       &:focus {
-        box-shadow: 0 0 5px #0092E1;
+        // box-shadow: 0 0 3px #000000;
         padding: 3px 0px 3px 3px;
         margin: 5px 1px 3px 0px;
-        border: 1px solid rgba(81, 203, 238, 1);
+        border: 2px solid rgba(0, 0, 0, 1);
         outline: none;
+        border-radius: 0.15rem;
       }
     }
 
@@ -49,6 +53,17 @@
     }
   }
 
+}
+
+.agreeTerms {
+  padding-left: 1.2rem;
+  label {
+    .form-check-label {
+      font-weight: 600;
+      margin: 0.2rem 0 0.2rem 0;
+      font-size: 1rem;
+  } 
+  }
 }
 
 .errMsg {
@@ -72,13 +87,14 @@
   }
 
   .userInActiveBtn {
-    margin: 5px 2px 5px 2px;
+    margin: 5px;
     font-weight: 500;
     width: 135px;
     color: #5E5E5E;
-    background-color: #F6F7F7;
+    background-color: rgba(255, 255, 255, 0);
     font-size: .7rem;
     border: 1px solid #5E5E5E;
+    // border-radius: 0.15rem;
 
     &:hover {
       border: 1px solid black;
@@ -89,24 +105,28 @@
 .userTypeLayout {
   display: flex;
   flex-wrap: wrap;
+  padding: 0;
 
   .userTypeBtn {
-    margin: 5px 2px 5px 2px;
+    margin: 5px;
     width: 135px;
     color: white;
-    background-color: #34613D;
+    background-color: rgba(0, 0, 0, 1);
     font-size: .7rem;
+    font-size: .7rem;
+    border-color: rgba(0, 0, 0, 1);
   }
 
   .userInActiveBtn {
-    margin: 5px 2px 5px 2px;
+    margin: 5px;
     font-weight: 500;
     width: 135px;
     color: #5E5E5E;
-    background-color: #F6F7F7;
+    background-color: rgba(255, 255, 255, 0);
     font-size: .7rem;
     border: 1px solid #5E5E5E;
-
+    // border-radius: 0.15rem;
+    
     &:hover {
       border: 1px solid black;
     }
@@ -126,17 +146,18 @@
   .submitBtn {
     width: 100px;
     color: white;
-    background-color: #79A979;
+    background-color: #147bd1;
     outline: none;
     border-width: 0;
     height: 2rem;
     border-radius: 0.5rem;
+    opacity: 0.4;
   }
 
   .submitActiveBtn {
     width: 100px;
     color: white;
-    background-color: #34613D;
+    background-color: #147bd1;
     outline: none;
     border-width: 0;
     height: 2rem;
@@ -174,23 +195,25 @@
   .userTypeLayout {
     display: flex;
     flex-wrap: wrap;
+    padding: 0;
 
     .userTypeBtn {
-      margin: 5px 4px 5px 4px;
+      margin: 5px;
       color: white;
-      background-color: #34613D;
+      background-color: rgba(0, 0, 0, 1);
       font-size: .7rem;
-      width: 10rem;
+      width: 8rem;
     }
 
     .userInActiveBtn {
-      margin: 5px 4px 5px 4px;
+      margin: 5px;
       font-weight: 500;
       color: #5E5E5E;
-      background-color: #F6F7F7;
+      background-color: rgba(255, 255, 255, 0);
       font-size: .7rem;
       border: 1px solid #5E5E5E;
       width: 8rem;
+      // border-radius: 0.15rem;
 
       &:hover {
         border: 1px solid black;

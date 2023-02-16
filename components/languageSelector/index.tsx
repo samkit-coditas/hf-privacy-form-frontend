@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 
 import { LanguageContext } from '../../hoc/languageProvider';
-import { Container, Row, Col, Dropdown, DropdownButton } from "react-bootstrap";
+import { Container, Row, Col, Dropdown } from "react-bootstrap";
 import styles from "./languageSelector.module.scss";
 
 const LanguageSelector = () => {

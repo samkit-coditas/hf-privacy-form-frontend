@@ -1,10 +1,13 @@
 import DropZone from "./dropZone";
 import styles from "./dragAndDrop.module.scss";
 
-const DragAndDrop = () => {
+const DragAndDrop = ({formData, setFormData}) => {
   return (
     <div className={styles.main}>
-        <DropZone/>
+        <DropZone
+          formData={formData}
+          setFormData={setFormData}
+        />
     </div>
   )
 };

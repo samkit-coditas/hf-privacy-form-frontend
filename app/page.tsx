@@ -12,7 +12,7 @@ export default function Home() {
       <Container fluid className={styles.containerWrapper}>
         <Row className={styles.contentWrapper}>
           <Col>
-            <h1 className={styles.headingWrapper}>onetrust</h1>
+            <h1 className={styles.headingWrapper}>OneTrust</h1>
           </Col>
         </Row>
       </Container>

@@ -10,9 +10,9 @@ export const getUserDetails = async () => {
   }
 }
 
-export const createNewUser = async (details) => {
+export const createNewUser = async (details, fileDetails) => {
   try {
-    const res = await axiosInstance.post(createUser, {data: details} );
+    const res = await axiosInstance.post(createUser, {data: JSON.stringify(details), "files.attachment": fileDetails });
     return res;
   } catch (e) {
     console.log(e)

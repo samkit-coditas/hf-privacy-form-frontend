@@ -32,5 +32,8 @@
   "noteDetailsThree": "Bitte wählen Sie aus der nachstehenden Liste die Organisation aus, zu der Sie in Beziehung stehen. Wenn Sie z. B. Arbeitnehmer oder Bewerber sind, wählen Sie bitte die Organisation aus, bei der Sie arbeiten oder gearbeitet oder Ihre Bewerbung eingereicht haben. Wenn Sie Marketingempfänger sind, wählen Sie bitte die Organisation aus, die Sie kontaktiert hat. ",
   "attachments": " Datei auswählen",
   "fileMsg": "Dateien größer als 4 werden nicht unterstützt.",
-  "submit": "Submit"
+  "agreeTerms":"Door aan te vinken, bevestigt u dat u bovenstaande dingen hebt gelezen, begrepen en ermee akkoord gaat",
+  "submit": "Indienen",
+  "requiredFieldError": "This field is required",
+  "invalidEmail": "Email is ongeldig"
 }

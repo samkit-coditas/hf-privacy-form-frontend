@@ -9,7 +9,7 @@ axiosInstance.interceptors.request.use((config) => {
   const temp: any = {
     ...config.headers,
     Authorization: token || "",
-    "Content-Type": "application/json",
+    "Content-Type": "multipart/form-data",
   };
   config.headers = temp;
   return config;

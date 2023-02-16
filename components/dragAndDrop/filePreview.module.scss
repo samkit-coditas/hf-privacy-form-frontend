@@ -1,8 +1,8 @@
 .fileList {
   display: flex;
-  margin-top: 1rem;
-  gap: 1rem;
+  margin-top: 0.25rem;
   width: 400px;
+  flex-wrap: wrap;
 }
 
 .fileContainer {
@@ -11,5 +11,12 @@
 }
 
 .fileName {
-  margin-left: 2rem;
+  margin-left: 0.3rem;
+}
+
+.filesEntry {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+
 }

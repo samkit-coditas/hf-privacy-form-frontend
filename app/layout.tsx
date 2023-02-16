@@ -2,6 +2,7 @@
 
 import './globals.scss'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { LanguageProvider } from "../hoc/languageProvider";
 
