@@ -54,7 +54,7 @@ const PrivacyForm = () => {
     employmentEndDate: "",
     appliedFor: "",
     requestDetails: "",
-    termsAggred: "true",
+    termsAggred: false,
     locale: "en",
     attachment: [],
   })
@@ -467,8 +467,20 @@ const PrivacyForm = () => {
               id={`default-checkbox`}
               label={localString['agreeTerms']}
               className={styles.agreeTerms}
-              {...register("termsAggred", { required: true,  onChange: (e: any) => setFormData({...formData, termsAggred: true }) })}
+              {...register("termsAggred", { required: localString["requiredFieldError"],  onChange: (e: any) => {
+                setFormData({...formData, termsAggred: !formData.termsAggred })
+              }
+             })}
             />
+            {errors.termsAggred ? (
+              <>
+                {errors.termsAggred.type === "required" && (
+                  <p className={styles.errMsg}>
+                    {errors.termsAggred.message}
+                  </p>
+                )}
+              </>
+            ) : null}
           </Row>
           <Row>
             <div className={styles.recaptchaWrapper}>

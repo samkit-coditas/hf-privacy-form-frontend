@@ -21,6 +21,7 @@
       height: 3rem;
       padding: 4px;
       background-color: #fff;
+      color: rgba(0, 0, 0, 1);
     }
 
     .inputField {
@@ -148,16 +149,16 @@
 
 .recaptchaWrapper {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   margin-top: 1rem;
 }
 
 .submitBtnWrapper {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 
   .submitBtn {
-    width: 100px;
+    width: 150px;
     color: white;
     background-color: #147bd1;
     outline: none;
@@ -168,13 +169,14 @@
   }
 
   .submitActiveBtn {
-    width: 100px;
+    width: 150px;
     color: white;
     background-color: #147bd1;
     outline: none;
     border-width: 0;
-    height: 2rem;
+    height: 2.25rem;
     border-radius: 0.5rem;
+    margin-top: 0.5rem;
   }
 
 }
