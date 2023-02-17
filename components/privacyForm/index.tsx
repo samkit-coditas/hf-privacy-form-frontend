@@ -41,7 +41,7 @@ const PrivacyForm = () => {
   const { localString, language } = useContext(LanguageContext)
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [ formData, setFormData ] = useState({
-    entityName: "OneTrust",
+    entityName: "Hydrafacial",
     userType: "",
     cloudType: "",
     country: "Afghanistan",
@@ -71,6 +71,7 @@ const PrivacyForm = () => {
   const [activeBtn, setActiveBtn] = useState(false)
   const [jobApplicantFieldStatus, setJobApplicantFieldStatus] = useState(false);
   const options = useMemo(() => setCountryLists(countryList().getData()), [])
+  const [sampleData, setSampleData] = useState({})
 
   const captchaRef = useRef<ReCAPTCHA>(null);
 
@@ -209,6 +210,7 @@ const PrivacyForm = () => {
 
   const getUsers = async () => {
     const response = await getUserDetails();
+    setSampleData(response?.data?.data[0]?.attributes)
   }
 
   const onSubmit = async (data: any) => {
@@ -287,12 +289,12 @@ const PrivacyForm = () => {
         <Col>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Row className={styles.rowWrapper}>
-            <label className={styles.labelWrapper}><span className={styles.requiredField}>*</span>{localString["chooseEntity"]}</label>
+            <label className={styles.labelWrapper}>{localString["chooseEntity"]}<span className={styles.requiredField}>*</span></label>
             <select {...register("entityName", { required: localString['requiredFieldError'], onChange: (e: any) => setFormData({...formData, entityName: e.target.value }) })} className={styles.selectWrapper}>
-              <option value="OneTrust">OneTrust</option>
-              <option value="Convercent by OneTrust">Convercent by OneTrust</option>
-              <option value="Planetly by OneTrust">Planetly by OneTrust</option>
-              <option value="Tugboat logic by OneTrust">Tugboat logic by OneTrust</option>
+              <option value="Hydrafacial">Hydrafacial</option>
+              <option value="Convercent by Hydrafacial">Convercent by Hydrafacial</option>
+              <option value="Planetly by Hydrafacial">Planetly by Hydrafacial</option>
+              <option value="Tugboat logic by Hydrafacial">Tugboat logic by Hydrafacial</option>
               <option value="DataGuidance">DataGuidance</option>
             </select>
             {errors.entityName ? (
@@ -309,7 +311,7 @@ const PrivacyForm = () => {
             <Col>
               <Row>
                 <Col>
-                  <label className={styles.labelWrapper}><span className={styles.requiredField}>*</span>{localString["userType"]}</label>
+                  <label className={styles.labelWrapper}>{localString["userType"]}<span className={styles.requiredField}>*</span></label>
                 </Col>
               </Row>
               <Row>
@@ -333,14 +335,14 @@ const PrivacyForm = () => {
                 <option value="GRC & Security Assurance Cloud">GRC & Security Assurance Cloud</option>
                 <option value="Ethics & Compliance Cloud">Ethics & Compliance Cloud</option>
                 <option value="ESG & Sustainability Cloud">ESG & Sustainability Cloud</option>
-                <option value="OneTrust PreferenceChoice">OneTrust PreferenceChoice</option>
-                <option value="OneTrust Ethics">OneTrust Ethics</option>
-                <option value="OneTrust ESG">OneTrust ESG</option>
+                <option value="Hydrafacial PreferenceChoice">Hydrafacial PreferenceChoice</option>
+                <option value="Hydrafacial Ethics">Hydrafacial Ethics</option>
+                <option value="Hydrafacial ESG">Hydrafacial ESG</option>
               </select>
             </Row>
           )}
           <Row className={styles.rowWrapper}>
-            <label className={styles.labelWrapper}><span className={styles.requiredField}>*</span>{localString["country"]}</label>
+            <label className={styles.labelWrapper}>{localString["country"]}<span className={styles.requiredField}>*</span></label>
             <select className={styles.selectWrapper} options={options} {...register("country", { required: localString['requiredFieldError'], onChange: (e: any) => setFormData({...formData, country: e.target.value }) })}>
               <>
                 {countryLists?.map((country) => (
@@ -352,9 +354,7 @@ const PrivacyForm = () => {
           <Row className={styles.rowWrapper}>
             <Col>
               <Row>
-                <Col>
-                  <label className={styles.labelWrapper}><span className={styles.requiredField}>*</span>{localString["requestType"]}</label>
-                </Col>
+                <label className={styles.labelWrapper}>{localString["requestType"]}<span className={styles.requiredField}>*</span></label>
               </Row>
               <Row>
                 <div className={!requestTypeErr ? styles.userTypeLayout : styles.userTypeErr}>
@@ -369,7 +369,7 @@ const PrivacyForm = () => {
             </Col>
           </Row>
           <Row className={styles.rowWrapper}>
-              <label className={styles.labelWrapper}><span className={styles.requiredField}>*</span>{localString["firstName"]}</label>
+              <label className={styles.labelWrapper}>{localString["firstName"]}<span className={styles.requiredField}>*</span></label>
               <input className={styles.inputField} type="text" placeholder="" {...register("firstName", {required: localString['requiredFieldError'], onChange: (e: any) => setFormData({...formData, firstName: e.target.value }), maxLength: 80})} />
               {errors.firstName ? (
                 <>
@@ -382,7 +382,7 @@ const PrivacyForm = () => {
               ) : null}
           </Row>
           <Row className={styles.rowWrapper}>
-            <label className={styles.labelWrapper}><span className={styles.requiredField}>*</span>{localString["lastName"]}</label>
+            <label className={styles.labelWrapper}>{localString["lastName"]}<span className={styles.requiredField}>*</span></label>
             <input className={styles.inputField} type="text" placeholder="" {...register("lastName", {required: localString['requiredFieldError'], onChange: (e: any) => setFormData({...formData, lastName: e.target.value }), maxLength: 100})} />
             {errors.lastName ? (
               <>
@@ -395,7 +395,7 @@ const PrivacyForm = () => {
             ) : null}
           </Row>
           <Row className={styles.rowWrapper}>
-            <label className={styles.labelWrapper}><span className={styles.requiredField}>*</span>{localString["email"]}</label>
+            <label className={styles.labelWrapper}>{localString["email"]}<span className={styles.requiredField}>*</span></label>
             <input
               className={styles.inputField}
               type="text"
@@ -405,7 +405,7 @@ const PrivacyForm = () => {
                 onChange: (e: any) => setFormData({...formData, email: e.target.value }),
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                  message: localString['invalidEmail']
+                  message: localString["invalidEmail"]
                 }
               })}
             />
@@ -442,9 +442,18 @@ const PrivacyForm = () => {
             </>
           }
           <Row className={styles.rowWrapper}>
-                <label className={styles.labelWrapper}><span className={styles.requiredField}>*</span>{localString["requestDetails"]}</label>
-                <textarea className={styles.textInputField} {...register("Request Details", {required: true, onChange: (e: any) => setFormData({...formData, requestDetails: e.target.value }) })} />
-              </Row>
+            <label className={styles.labelWrapper}>{localString["requestDetails"]}<span className={styles.requiredField}>*</span></label>
+            <textarea className={styles.textInputField} {...register("requestDetails", {required: localString['requiredFieldError'], onChange: (e: any) => setFormData({...formData, requestDetails: e.target.value }) })} />
+            {errors.requestDetails ? (
+              <>
+                {errors.requestDetails.type === "required" && (
+                  <p className={styles.errMsg}>
+                    {errors.requestDetails.message}
+                  </p>
+                )}
+              </>
+            ) : null}
+          </Row>
           <Row>
             <FooterContent />
           </Row>
@@ -480,7 +489,7 @@ const PrivacyForm = () => {
             </Col>
           </Row>
           <Row className={styles.submitBtnWrapper}>
-            <input type="submit" disabled={!activeBtn} className={activeBtn ? styles.submitActiveBtn : styles.submitBtn} />
+            <input type="submit"  className={styles.submitActiveBtn} />
           </Row>
           {successMsg && (
             <Row className={styles.successMsg}>

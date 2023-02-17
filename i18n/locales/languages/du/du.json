@@ -1,6 +1,6 @@
 {
-  "contentTitle": "Willkommen auf dem OneTrust Webformular!",
-  "contentDescription": "Mit diesem Formular können Sie eine Anfrage zu Ihren personenbezogenen Daten stellen, die von OneTrust und seinen Tochtergesellschaften und verbundenen Unternehmen (Convercent von OneTrust, OneTrust DataGuidance, Planetly von OneTrust, PrivacyConnect, Redacted.ai und Tugboat Logic von OneTrust) verarbeitet werden. Bitte füllen Sie dieses Formular aus. Wir werden Ihnen so schnell wie möglich antworten.",
+  "contentTitle": "Willkommen auf dem Hydrafacial Webformular!",
+  "contentDescription": "Mit diesem Formular können Sie eine Anfrage zu Ihren personenbezogenen Daten stellen, die von Hydrafacial und seinen Tochtergesellschaften und verbundenen Unternehmen (Convercent von Hydrafacial, Hydrafacial DataGuidance, Planetly von Hydrafacial, PrivacyConnect, Redacted.ai und Tugboat Logic von Hydrafacial) verarbeitet werden. Bitte füllen Sie dieses Formular aus. Wir werden Ihnen so schnell wie möglich antworten.",
   "contentFooter": "Vielen Dank",
   "chooseEntity": " Organisation auswählen",
   "userType": "Ich bin ein",
@@ -27,7 +27,7 @@
   "endDate": "Enddatum des Beschäftigung",
   "requestDetails": "Angaben zur Anfrage",
   "pleaseNote": "Bitte beachten",
-  "noteDetailsOne": "OneTrust und seine Tochtergesellschaften und verbundenen Unternehmen können nur Betroffenenanfragen von solchen Personen verarbeiten, die in einer direkten Beziehung zu OneTrust oder seinen Tochtergesellschaften und verbundenen Unternehmen stehen – für unsere Kunden, Bewerber, Mitarbeiter oder Marketingempfänger. Da wir Anbieter von B2B-Datenschutzsoftware (Datenverarbeiter) sind, können wir keine Anfragen von Betroffenen für unsere Kundenunternehmen bearbeiten, die unsere Software für ihre eigenen Datenschutzprogramme verwenden. Für solche Anfragen empfehlen wir Ihnen, sich direkt an diese Unternehmen zu wenden.",
+  "noteDetailsOne": "Hydrafacial und seine Tochtergesellschaften und verbundenen Unternehmen können nur Betroffenenanfragen von solchen Personen verarbeiten, die in einer direkten Beziehung zu Hydrafacial oder seinen Tochtergesellschaften und verbundenen Unternehmen stehen – für unsere Kunden, Bewerber, Mitarbeiter oder Marketingempfänger. Da wir Anbieter von B2B-Datenschutzsoftware (Datenverarbeiter) sind, können wir keine Anfragen von Betroffenen für unsere Kundenunternehmen bearbeiten, die unsere Software für ihre eigenen Datenschutzprogramme verwenden. Für solche Anfragen empfehlen wir Ihnen, sich direkt an diese Unternehmen zu wenden.",
   "noteDetailsTwo": "Weitere Informationen darüber, wie wir Ihre personenbezogenen Daten verwenden und schützen, finden Sie in unserer Datenschutzübersicht und in unserer ausführlichen Datenschutzerklärung.",
   "noteDetailsThree": "Bitte wählen Sie aus der nachstehenden Liste die Organisation aus, zu der Sie in Beziehung stehen. Wenn Sie z. B. Arbeitnehmer oder Bewerber sind, wählen Sie bitte die Organisation aus, bei der Sie arbeiten oder gearbeitet oder Ihre Bewerbung eingereicht haben. Wenn Sie Marketingempfänger sind, wählen Sie bitte die Organisation aus, die Sie kontaktiert hat. ",
   "attachments": " Datei auswählen",
