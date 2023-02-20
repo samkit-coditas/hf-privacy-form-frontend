@@ -10,7 +10,7 @@ const HeaderContent = () => {
     <Container className={styles.containerWrapper}>
       <Row>
         <Col>
-          <h6>{localString["contentTitle"]}</h6>
+          <h6 style={{paddingTop: '1rem'}}>{localString["contentTitle"]}</h6>
           <p className={styles.contentLayout}>
             {localString["contentDescription"]}
           </p>
