@@ -395,6 +395,8 @@ const PrivacyPolicyPage = () => {
           <p>
             Controller’s Contact Information:
           </p>
+          <div className={styles['tableWrapper']}>
+
           <table className={styles["contactDetailsTable"]}>
             <thead>
               <tr>
@@ -422,6 +424,7 @@ const PrivacyPolicyPage = () => {
               </tr>
             </tbody>
           </table>
+          </div>
           <p className={styles["contactDetails"]}>Data Protection Officer: Ignacio de la Corte
           </p>
           <p><a href="  dpo@hydrafacial.com"

@@ -16,14 +16,13 @@ const FormButtonInput = ({
     <div className={!buttonErr ? styles.userTypeLayout : styles.userTypeErr}>
       {buttonList?.map((button, index) => {
         return(
-          <>
+          <div key={index}>
             <FormButtons
-              key={index}
               button={button}
               handleClick={() => handleButtonChange(button.name)}
               buttonName={localString[button.name] || ''}
             />
-          </>
+          </div>
         )
       })}
     </div>

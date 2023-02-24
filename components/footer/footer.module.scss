@@ -64,3 +64,20 @@ $navbarColor: #ffffff;
 .privacyWrapper {
   font-size: 0.7rem;
 }
+
+.policyLink {
+  text-decoration: none;
+}
+
+
+@media (min-width: 921px) and (max-width: 1024px) {
+  .containerWrapper {
+    padding: 0 8rem 0 8rem;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .containerWrapper {
+    padding: 0 15rem 0 15rem;
+  }
+}

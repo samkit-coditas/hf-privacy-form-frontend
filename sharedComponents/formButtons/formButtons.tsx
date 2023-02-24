@@ -4,7 +4,6 @@ import { IFormButtonsProps } from "./formButtons.type";
 import { Button } from "react-bootstrap";
 
 const FormButtons = ({
-  key,
   className,
   handleClick,
   button,
@@ -13,7 +12,6 @@ const FormButtons = ({
   return(
     <>
       <Button
-        key={key}
         className={button.active ? styles.userTypeBtn : styles.userInActiveBtn}
         onClick={handleClick}
       >

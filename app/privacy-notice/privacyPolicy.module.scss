@@ -6,6 +6,17 @@
   justify-content: center;
   gap:2rem;
 
+  @media (max-width: 920px) {
+    .container {
+      margin: 1rem;
+      width: 90vw !important;
+      padding: 1.5rem !important;
+    }
+    .tableWrapper {
+      overflow-x: scroll;
+    }
+  }
+  
   .container {
     width: 75vw;
     background-color: white;

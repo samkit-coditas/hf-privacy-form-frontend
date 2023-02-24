@@ -16,14 +16,14 @@ const DropZone = ({ formData, setFormData }) => {
     })
   }
 
-  const handleFileUpload = () => {
+  const handleFileUpload = (e: any) => {
     clickableDiv.current.click()
   }
 
 
   return (
     <>
-      <div className={styles.dropzone}  onClick={() => handleFileUpload()}>
+      <div className={styles.dropzone}  onClick={(e) => handleFileUpload(e)}>
         <input
           id="fileSelect"
           type="file"
@@ -34,6 +34,7 @@ const DropZone = ({ formData, setFormData }) => {
         />
         <label htmlFor="fileSelect">{localString["attachments"]}</label>
         <div className={styles.uploadMessage}>
+          {/* <p className={styles.uploadText}>{localString["fileMsg"]}</p> */}
           <p className={styles.uploadText}>{localString["fileSupport"]}</p>
         </div>
       </div>
