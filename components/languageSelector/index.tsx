@@ -31,6 +31,9 @@ const LanguageSelector = () => {
             <Dropdown.Item eventKey={['Français', 'fr']} >Français</Dropdown.Item>
             <Dropdown.Item eventKey={['Deutsch','du']}>Deutsch</Dropdown.Item>
             <Dropdown.Item eventKey={['Español', 'es']}>Español</Dropdown.Item>
+            <Dropdown.Item eventKey={['日本語', 'jp']}>日本語</Dropdown.Item >
+            <Dropdown.Item eventKey={['Português', 'pg']}>Português</Dropdown.Item >
+            <Dropdown.Item eventKey={['中國人', 'ch']}>中國人</Dropdown.Item >
           </Dropdown.Menu>
         </Dropdown>
         </Col>

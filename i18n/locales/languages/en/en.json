@@ -1,6 +1,6 @@
 {
-  "contentTitle": "Welcome to Hydrafacial Privacy Webform!",
-  "contentDescription": "You can use this form to submit a request regarding your personal information that is processed by Hydrafacial and its subsidiaries and affiliates (Convercent by Hydrafacial, Hydrafacial DataGuidance, Planetly by Hydrafacial, PrivacyConnect, Redacted.ai, and Tugboat Logic by Hydrafacial).Please complete this form and we will respond as soon as possible.Please select from the list below the entity with which you have a relationship. For example, if you are an Employee or Job Applicant, please select the entity where you work/worked or submitted your application. If you are a Marketing Recipient, please select the entity that contacted you.",
+  "contentTitle": "Welcome to Hydrafacial Privacy Request Form!",
+  "contentDescription": "You can use this form to submit a request regarding your personal information that is processed by Hydrafacial and its subsidiaries and affiliates. Please complete this form and we will respond as soon as possible. Be aware that these rights do not apply in all circumstances, but where we can we’ll give you what you want.",
   "contentFooter": "Thank You",
   "chooseEntity": "Choose Entity",
   "userType": "I am a (an)",
@@ -15,8 +15,9 @@
   "infoRequest": "Info Request",
   "updateRequest": "Update Request",
   "deletionRequest": "Deletion Request",
+  "restrictionRequest": "Restriction Request",
   "fileComplaint": "File a Complaint",
-  "marketingUnsubscribe": "Marketing Unsubscribe",
+  "marketingUnsubscribe": "Object / Marketing Unsubscribe",
   "sharingData": "Opt-Out of Sale/Sharing of Data",
   "country": "Country",
   "firstName": "First Name",
@@ -31,9 +32,15 @@
   "noteDetailsTwo": "As we are B2B Privacy Software providers (data processors), we cannot respond to any requests  on behalf of companies that use our software for their own privacy programs. For such requests, we recommend that you reach out to such companies directly.",
   "noteDetailsThree": "For more details and information about how we use and protect your personal information, please visit our Privacy Overview and our Full Privacy Notice.",
   "attachments": "Attachment",
-  "fileMsg": "File larger than 4 MB is not supported",
+  "fileMsg": "File larger than 4 MB is not supported.",
   "agreeTerms":"By ticking, you are confirming that you have read, understood and agree above things",
   "submit": "Submit",
   "requiredFieldError": "This field is required",
-  "invalidEmail": "Email is invalid"
+  "invalidEmail": "Email is invalid",
+  "fileSupport": "Supported file types: JPG, JPEG, PNG, SVG, GIF, PDF",
+  "provider": "Provider",
+  "esti": "Esti",
+  "client": "Client / Consumer",  
+  "footerTitle": "If you are looking to make a request to a company that uses Hydrafacial, please directly do so on their website",
+  "poweredBy": "Powered by"
 }

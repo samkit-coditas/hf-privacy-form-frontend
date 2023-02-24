@@ -3,6 +3,152 @@ export const languages = {
   français: "fr",
   deutsch: "du",
   español: "es",
-  nederlands: "nd"
+  nederlands: "nd",
+  日本語: "jp",
+  Português: 'pg',
+  中國人: 'ch',
 };
 export const path = "./locales/languages/";
+export const cloudTypeOptions = [
+  {
+    id: 1,
+    name: "Privacy & Data Governance Cloud",
+    value: "Privacy & Data Governance Cloud"
+  },
+  {
+    id: 2,
+    name: "GRC & Security Assurance Cloud",
+    value: "GRC & Security Assurance Cloud"
+  },
+  {
+    id: 3,
+    name: "Ethics & Compliance Cloud",
+    value: "Ethics & Compliance Cloud"
+  },
+  {
+    id: 4,
+    name: "ESG & Sustainability Cloud",
+    value: "ESG & Sustainability Cloud"
+  },
+  {
+    id: 5,
+    name: "Hydrafacial PreferenceChoice",
+    value: "Hydrafacial PreferenceChoice"
+  },
+  {
+    id: 6,
+    name: "Hydrafacial Ethics",
+    value: "Hydrafacial Ethics"
+  },
+  {
+    id: 7,
+    name: "Hydrafacial ESG",
+    value: "Hydrafacial ESG"
+  }
+];
+
+export const entityTypeOptions = [
+  {
+    id: 1,
+    name: "Hydrafacial",
+    value: "Hydrafacial"
+  }
+  // {
+  //   id: 2,
+  //   name: "Convercent by Hydrafacial",
+  //   value: "Convercent by Hydrafacial"
+  // },
+  // {
+  //   id: 3,
+  //   name: "Planetly by Hydrafacial",
+  //   value: "Planetly by Hydrafacial"
+  // },
+  // {
+  //   id: 4,
+  //   name: "Tugboat logic by Hydrafacial",
+  //   value: "Tugboat logic by Hydrafacial"
+  // },
+  // {
+  //   id: 5,
+  //   name: "DataGuidance",
+  //   value: "DataGuidance"
+  // }
+];
+
+export const countryOptions = [
+  {
+    id: 1,
+    name: "Australia",
+    value: "Australia"
+  },
+  {
+    id: 2,
+    name: "New Zealand",
+    value: "New Zealand"
+  },
+  {
+    id: 3,
+    name: "China",
+    value: "China"
+  },
+  {
+    id: 4,
+    name: "Japan",
+    value: "Japan"
+  },
+  {
+    id: 5,
+    name: "Hong Kong",
+    value: "Hong Kong"
+  },
+  {
+    id: 6,
+    name: "Singapore",
+    value: "Singapore"
+  },
+  {
+    id: 7,
+    name: "India",
+    value: "India"
+  },
+  {
+    id: 8,
+    name: "United Kingdom",
+    value: "United Kingdom"
+  },
+  {
+    id: 9,
+    name: "United States",
+    value: "United States"
+  },
+  {
+    id: 10,
+    name: "Canada",
+    value: "Canada"
+  },
+  {
+    id: 11,
+    name: "Ireland",
+    value: "Ireland"
+  },
+  {
+    id: 12,
+    name: "France",
+    value: "France"
+  },
+  {
+    id: 13,
+    name: "Spain",
+    value: "Spain"
+  },
+  {
+    id: 14,
+    name: "Portugal",
+    value: "Portugal"
+  },
+  {
+    id: 15,
+    name: "Germnay",
+    value: "Germany"
+  }
+]

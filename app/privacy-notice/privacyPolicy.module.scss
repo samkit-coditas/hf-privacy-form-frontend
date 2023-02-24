@@ -1,0 +1,68 @@
+.outerContainer {
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap:2rem;
+
+  .container {
+    width: 75vw;
+    background-color: white;
+    padding: 1rem 3rem;
+
+    p,
+    li {
+      font-size: 0.875rem;
+    }
+
+    .title {
+      font-weight: 300;
+      font-size: 1.75rem;
+      padding-top: 0.5rem;
+      margin: 0;
+
+      .fontWeightExtraBold {
+        font-weight: 800;
+      }
+    }
+
+    .updatedOn {
+      font-weight: 600;
+      font-size: 0.875rem;
+      display: inline-block;
+      padding-bottom: 2rem;
+    }
+
+    .summary {
+      .summaryTitle {
+        font-weight: 300;
+        padding-bottom: 1rem;
+      }
+    }
+    .contentContainer {
+      .contentTitle {
+        font-weight: 300;
+        padding-bottom: 1rem;
+      }
+    }
+
+    .contactDetailsTable {
+      border: 1px solid black;
+      margin: 1rem;
+      margin-bottom: 2rem;
+      th,
+      td {
+        font-size: 0.875rem;
+        padding: 0.5rem;
+        border-right: 1px solid black;
+      }
+      thead {
+        border: 1px solid black;
+      }
+    }
+    .contactDetails {
+      margin: 0;
+    }
+  }
+}

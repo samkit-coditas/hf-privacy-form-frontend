@@ -24,11 +24,18 @@ const DropZone = ({ formData, setFormData }) => {
   return (
     <>
       <div className={styles.dropzone}  onClick={() => handleFileUpload()}>
-        <input id="fileSelect" type="file"  ref={clickableDiv} className={styles.files} onChange={(e: any) => handleFileSelect(e)}/>
+        <input
+          id="fileSelect"
+          type="file"
+          ref={clickableDiv}
+          className={styles.files}
+          onChange={(e: any) => handleFileSelect(e)}
+          accept="image/png, image/jpeg, image/jpg, image/gif, image/svg, application/pdf"
+        />
         <label htmlFor="fileSelect">{localString["attachments"]}</label>
-        <p className={styles.uploadMessage}>
-          {localString["fileMsg"]}
-        </p>
+        <div className={styles.uploadMessage}>
+          <p className={styles.uploadText}>{localString["fileSupport"]}</p>
+        </div>
       </div>
       {/* Pass the selectect or dropped files as props */}
       <FilePreview fileData={formData.attachment} />

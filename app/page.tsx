@@ -5,6 +5,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import PrivacyForm from "components/privacyForm";
 import HeaderContent from "components/headerContent";
 import LanguageSelector from "components/languageSelector";
+import Footer from "components/footer"
 import Image from 'next/image'
 
 export default function Home() {
@@ -14,10 +15,10 @@ export default function Home() {
         <Row className={styles.contentWrapper}>
           <Col>
             <Image
-              src="hydrafacial_logo.svg"
+              src="/hydrafacial_pos_tm.png"
               alt="Picture of the author"
-              width={250}
-              height={125}
+              width={220}
+              height={140}
             />
           </Col>
         </Row>
@@ -25,6 +26,7 @@ export default function Home() {
       <LanguageSelector />
       <HeaderContent/>
       <PrivacyForm/>
+      <Footer />
     </>
   )
 }

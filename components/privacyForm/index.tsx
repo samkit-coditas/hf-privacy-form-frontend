@@ -3,15 +3,19 @@ import { Container, Row, Col, Dropdown, DropdownButton, Button, ButtonGroup, For
 import styles from "./privacyForm.module.scss";
 import { useForm, Resolver } from 'react-hook-form';
 import countryList from 'react-select-country-list';
-import FooterContent from "../footerContent";
+import NoteContent from "../noteContent";
 import ReCAPTCHA from "react-google-recaptcha";
 import DragAndDrop from "../dragAndDrop";
 import { LanguageContext } from '../../hoc/languageProvider';
 import { getUserDetails, createNewUser, uploadFile } from "../../services/user.service";
- import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
+import { cloudTypeOptions, entityTypeOptions, countryOptions } from "constants/constants";
+import FormButtonInput from "../../sharedComponents/formButtonInput/formButtonInput";
+import FormLabels from "../../sharedComponents/formLabels/formLabels";
+import FormInputs from "../../sharedComponents/formInputs/formInputs";
+import FormSelect from "../../sharedComponents/formSelects/formSelects";
 
 const PrivacyForm = () => {
-
   const notifySuccess = () => {
     toast.success("Form submitted successfully ", {
       position: "top-right",
@@ -44,7 +48,7 @@ const PrivacyForm = () => {
     entityName: "Hydrafacial",
     userType: "",
     cloudType: "",
-    country: "Afghanistan",
+    country: "Australia",
     requestType: "",
     firstName: "",
     lastName: "",
@@ -88,17 +92,22 @@ const PrivacyForm = () => {
     },
     {
       id: 3,
-      name: "jobApplicant",
+      name: "provider",
       active: false
     },
     {
       id: 4,
-      name: "marketingRecipient",
+      name: "esti",
       active: false
     },
     {
       id: 5,
-      name: "authorizedAgent",
+      name: "client",
+      active: false
+    },
+    {
+      id: 6,
+      name: "marketingRecipient",
       active: false
     },
   ];
@@ -121,24 +130,24 @@ const PrivacyForm = () => {
     },
     {
       id: 4,
-      name: "deletionRequest",
+      name: "restrictionRequest",
       active: false
     },
     {
       id: 5,
-      name: "fileComplaint",
+      name: "deletionRequest",
       active: false
     },
     {
       id: 6,
-      name: "marketingUnsubscribe",
+      name: "fileComplaint",
       active: false
     },
     {
       id: 7,
-      name: "sharingData",
+      name: "marketingUnsubscribe",
       active: false
-    },
+    }
   ];
 
   const onCaptchaChange = () => {
@@ -158,15 +167,15 @@ const PrivacyForm = () => {
     if(userType === "platformUser"){
       setCloud(true)
       setEmpDetails(false)
-      setRequestTypes(requestBtns)
+      setRequestTypes(requestBtns.slice(0,5))
     } else if(userType === "employee"){
       setEmpDetails(true)
       setCloud(false)
       setRequestTypes(requestBtns.slice(0,5))
-    } else if(userType === "jobApplicant"){
+    } else if(userType === "provider"){
       setEmpDetails(false)
       setCloud(false)
-      setRequestTypes(requestBtns.slice(0,5))
+      setRequestTypes(requestBtns)
       setJobApplicantFieldStatus(true);
     } else {
       setCloud(false)
@@ -183,7 +192,7 @@ const PrivacyForm = () => {
 
   const handleRequestType = (requestType: string) => {
     setRequestTypeErr(false)
-    if(formData.userType === "employee" || formData.userType === "jobApplicant"){
+    if(formData.userType === "employee" || formData.userType === "platformUser"){
       requestBtns.slice(0,5).forEach((element, index) => {
         if(element.name === requestType) {
           element.active = true;
@@ -210,7 +219,7 @@ const PrivacyForm = () => {
 
   const getUsers = async () => {
     const response = await getUserDetails();
-    setSampleData(response?.data?.data[0]?.attributes)
+    // setSampleData(response?.data?.data[0]?.attributes)
   }
 
   const onSubmit = async (data: any) => {
@@ -247,10 +256,11 @@ const PrivacyForm = () => {
 
     userFileData.append(`files.attachment`, formData.attachment);
 
-    if(formData.userType && formData.requestType){
-      const response = await createNewUser(details, userFileData)
-      if(response){
-         notifySuccess()
+    if (formData.userType && formData.requestType) {
+      debugger
+      const response = await createNewUser(details, userFileData);
+      if (response) {
+        notifySuccess();
       } else {
         notifyFailure()
       }
@@ -288,15 +298,17 @@ const PrivacyForm = () => {
       <Row>
         <Col>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Row className={styles.rowWrapper}>
-            <label className={styles.labelWrapper}>{localString["chooseEntity"]}<span className={styles.requiredField}>*</span></label>
-            <select {...register("entityName", { required: localString['requiredFieldError'], onChange: (e: any) => setFormData({...formData, entityName: e.target.value }) })} className={styles.selectWrapper}>
-              <option value="Hydrafacial">Hydrafacial</option>
-              <option value="Convercent by Hydrafacial">Convercent by Hydrafacial</option>
-              <option value="Planetly by Hydrafacial">Planetly by Hydrafacial</option>
-              <option value="Tugboat logic by Hydrafacial">Tugboat logic by Hydrafacial</option>
-              <option value="DataGuidance">DataGuidance</option>
-            </select>
+          {/* <Row className={styles.rowWrapper}>
+            <FormLabels
+              labelName={localString["chooseEntity"]}
+              required={true}
+            />
+            <FormSelect
+              options={entityTypeOptions}
+              fieldName={"entityName"}
+              required={localString['requiredFieldError']}
+              onChange={(e: any) => setFormData({...formData, entityName: e.target.value })}
+            />
             {errors.entityName ? (
               <>
                 {errors.entityName.type === "required" && (
@@ -306,64 +318,69 @@ const PrivacyForm = () => {
                 )}
               </>
             ) : null}
-          </Row>
+          </Row> */}
           <Row className={styles.rowWrapper}>
-            <Col>
-              <Row>
-                <Col>
-                  <label className={styles.labelWrapper}>{localString["userType"]}<span className={styles.requiredField}>*</span></label>
-                </Col>
-              </Row>
-              <Row>
-                <div className={!userTypeErr ? styles.userTypeLayout : styles.userTypeErr}>
-                  {userTypes?.map((button, index) => {
-                    return(
-                      <Button key={index} className={button.active ? styles.userTypeBtn : styles.userInActiveBtn} onClick={() => handleUserType(button.name)}>{localString[button.name] || ''}</Button>
-                    )
-                  })}
-                </div>
-                {userTypeErr && <p className={styles.errMsg}>{localString['requiredFieldError']}</p>}
-              </Row>
-            </Col>
-          </Row>
+              <Col>
+                <Row>
+                  <FormLabels
+                    labelName={localString["userType"]}
+                    required={true}
+                  />
+                </Row>
+                <Row>
+                  <FormButtonInput
+                    buttonList={userTypes}
+                    buttonErr={userTypeErr}
+                    handleButtonChange={handleUserType}
+                  />
+                  {userTypeErr && (
+                    <p className={styles.errMsg}>
+                      {localString["requiredFieldError"]}
+                    </p>
+                  )}
+                </Row>
+              </Col>
+            </Row>
           {showCloud && (
             <Row className={styles.rowWrapper}>
-              <label className={styles.labelWrapper}>{localString["cloudType"]}</label>
-              <select className={styles.selectWrapper} {...register("cloudType", { required: false, onChange: (e: any) => {setFormData({...formData, cloudType: e.target.value})} })}>
-                <option></option>
-                <option value="Privacy & Data Governance Cloud">Privacy & Data Governance Cloud</option>
-                <option value="GRC & Security Assurance Cloud">GRC & Security Assurance Cloud</option>
-                <option value="Ethics & Compliance Cloud">Ethics & Compliance Cloud</option>
-                <option value="ESG & Sustainability Cloud">ESG & Sustainability Cloud</option>
-                <option value="Hydrafacial PreferenceChoice">Hydrafacial PreferenceChoice</option>
-                <option value="Hydrafacial Ethics">Hydrafacial Ethics</option>
-                <option value="Hydrafacial ESG">Hydrafacial ESG</option>
-              </select>
+              <FormLabels
+                labelName={localString["cloudType"]}
+                required={false}
+              />
+              <FormSelect
+                options={cloudTypeOptions}
+                fieldName={"cloudType"}
+                required={false}
+                onChange={(e: any) => {setFormData({...formData, cloudType: e.target.value})}}
+              />
             </Row>
           )}
           <Row className={styles.rowWrapper}>
-            <label className={styles.labelWrapper}>{localString["country"]}<span className={styles.requiredField}>*</span></label>
-            <select className={styles.selectWrapper} options={options} {...register("country", { required: localString['requiredFieldError'], onChange: (e: any) => setFormData({...formData, country: e.target.value }) })}>
-              <>
-                {countryLists?.map((country) => (
-                  <option value={country.label}>{country.label}</option>
-                ))}
-              </>
-            </select>
+            <FormLabels
+              labelName={localString["country"]}
+              required={true}
+            />
+            <FormSelect
+              options={countryOptions}
+              fieldName={"country"}
+              required={localString['requiredFieldError']}
+              onChange={(e: any) => setFormData({...formData, country: e.target.value })}
+            />
           </Row>
           <Row className={styles.rowWrapper}>
             <Col>
               <Row>
-                <label className={styles.labelWrapper}>{localString["requestType"]}<span className={styles.requiredField}>*</span></label>
+                <FormLabels
+                  labelName={localString["requestType"]}
+                  required={true}
+                />
               </Row>
               <Row>
-                <div className={!requestTypeErr ? styles.userTypeLayout : styles.userTypeErr}>
-                  {requestTypes?.map((button, index) => {
-                    return(
-                      <Button key={index} className={button.active ? styles.userTypeBtn : styles.userInActiveBtn} onClick={() => handleRequestType(button.name)}>{localString[button.name] || ''}</Button>
-                    )
-                  })}
-                </div>
+                <FormButtonInput
+                  buttonList={requestTypes}
+                  buttonErr={requestTypeErr}
+                  handleButtonChange={handleRequestType}
+                />
                 {requestTypeErr && <p className={styles.errMsg}>{localString['requiredFieldError']}</p>}
               </Row>
             </Col>
@@ -425,24 +442,50 @@ const PrivacyForm = () => {
             ) : null}
 
           </Row>
-          {(empDetails || jobApplicantFieldStatus) && (<Row className={styles.rowWrapper}>
-            <label className={styles.labelWrapper}>{localString["jobtitle"]}</label>
-            <input className={styles.inputField} type="text" placeholder="" {...register("Your Job Title or Position Applied For", { onChange: (e: any) => setFormData({...formData, jobtitle: e.target.value }) })} />
-          </Row>)}
+          {(empDetails || jobApplicantFieldStatus) && (
+            <Row className={styles.rowWrapper}>
+              <FormLabels
+                labelName={localString["jobtitle"]}
+                required={false}
+              />
+              <FormInputs
+                type="text"
+                fieldName={"Your Job Title or Position Applied For"}
+                onChange={(e: any) => setFormData({...formData, jobtitle: e.target.value })}
+              />
+            </Row>
+          )}
           {empDetails &&
             <>
               <Row className={styles.rowWrapper}>
-                <label className={styles.labelWrapper}>{localString["startDate"]}</label>
-                <input className={styles.inputField} type="date" placeholder="" {...register("Your Employment Start Date", { onChange: (e: any) => setFormData({...formData, employmentStartDate: e.target.value }) })} />
+                <FormLabels
+                  labelName={localString["startDate"]}
+                  required={false}
+                />
+                <FormInputs
+                  type="date"
+                  fieldName={"Your Employment Start Date"}
+                  onChange={(e: any) => setFormData({...formData, employmentStartDate: e.target.value })}
+                />
               </Row>
               <Row className={styles.rowWrapper}>
-                <label className={styles.labelWrapper}>{localString["endDate"]}</label>
-                <input className={styles.inputField} type="date" placeholder="" {...register("Your Employment End Date", { onChange: (e: any) => setFormData({...formData, employmentEndDate: e.target.value }) })} />
+                <FormLabels
+                  labelName={localString["endDate"]}
+                  required={false}
+                />
+                <FormInputs
+                  type="date"
+                  fieldName={"Your Employment End Date"}
+                  onChange={(e: any) => setFormData({...formData, employmentEndDate: e.target.value })}
+                />
               </Row>
             </>
           }
           <Row className={styles.rowWrapper}>
-            <label className={styles.labelWrapper}>{localString["requestDetails"]}<span className={styles.requiredField}>*</span></label>
+            <FormLabels
+              labelName={localString["requestDetails"]}
+              required={true}
+            />
             <textarea className={styles.textInputField} {...register("requestDetails", {required: localString['requiredFieldError'], onChange: (e: any) => setFormData({...formData, requestDetails: e.target.value }) })} />
             {errors.requestDetails ? (
               <>
@@ -455,13 +498,9 @@ const PrivacyForm = () => {
             ) : null}
           </Row>
           <Row>
-            <FooterContent />
+            <NoteContent />
           </Row>
           <Row className={styles.rowWrapper}>
-            {/* <label className={styles.labelWrapper}>Please confirm your understanding of the above before submitting your request</label> */}
-            {/* <select className={styles.selectWrapper} {...register("termsAggred", { required: true,  onChange: (e: any) => setFormData({...formData, termsAggred: e.target.value }) })}>
-              <option value="true">I understand</option>
-            </select> */}
             <Form.Check
               type="checkbox"
               id={`default-checkbox`}
@@ -503,17 +542,6 @@ const PrivacyForm = () => {
           <Row className={styles.submitBtnWrapper}>
             <input type="submit"  className={styles.submitActiveBtn} />
           </Row>
-          {successMsg && (
-            <Row className={styles.successMsg}>
-              <div style={{display: "contents"}}>*Form submitted successfully</div>
-            </Row>
-          )}
-          {failureMsg && (
-            <Row className={styles.failureMsg}>
-              <div style={{display: "contents"}}>*Failed to submit form</div>
-            </Row>
-          )}
-
         </form>
         </Col>
       </Row>

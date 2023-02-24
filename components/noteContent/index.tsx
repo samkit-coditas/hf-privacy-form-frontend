@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import styles from "./footerContent.module.scss";
+import styles from "./noteContent.module.scss";
 import { LanguageContext } from '../../hoc/languageProvider';
 
-const FooterContent = () => {
+const NoteContent = () => {
   const { localString } = useContext(LanguageContext)
 
   return(
@@ -22,4 +22,4 @@ const FooterContent = () => {
   )
 };
 
-export default FooterContent;
+export default NoteContent;

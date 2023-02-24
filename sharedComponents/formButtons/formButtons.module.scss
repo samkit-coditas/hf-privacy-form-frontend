@@ -1,0 +1,51 @@
+.userTypeBtn {
+  margin: 5px;
+  width: 135px;
+  color: white;
+  background-color: rgba(0, 0, 0, 1);
+  font-size: .7rem;
+  font-size: .7rem;
+  border-color: rgba(0, 0, 0, 1);
+}
+
+.userInActiveBtn {
+  margin: 5px;
+  font-weight: 500;
+  width: 135px;
+  color: #5E5E5E;
+  background-color: rgba(255, 255, 255, 0);
+  font-size: .7rem;
+  border: 1px solid #5E5E5E;
+  // border-radius: 0.15rem;
+
+  &:hover {
+    border: 1px solid rgba(255, 255, 255, 0);
+    background-color: rgba(0, 0, 0, 1);
+  }
+}
+
+@media (max-width: 920px) {
+  .userTypeBtn {
+    margin: 5px;
+    color: white;
+    background-color: rgba(0, 0, 0, 1);
+    font-size: .7rem;
+    width: 8rem;
+  }
+
+  .userInActiveBtn {
+    margin: 5px;
+    font-weight: 500;
+    color: #5E5E5E;
+    background-color: rgba(255, 255, 255, 0);
+    font-size: .7rem;
+    border: 1px solid #5E5E5E;
+    width: 8rem;
+    // border-radius: 0.15rem;
+
+    &:hover {
+      border: 1px solid rgba(255, 255, 255, 0);
+      background-color: rgba(0, 0, 0, 1);
+    }
+  }
+}
