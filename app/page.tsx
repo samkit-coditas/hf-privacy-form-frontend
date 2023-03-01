@@ -12,7 +12,6 @@ import BrandingLogo from "@/public/Hydrafacial_Pos_Trademark.svg";
 
 const Home = ({lang}) => {
   const [refresh, setRefresh] = useState(false)
-  const [localeLang, setLocaleLang] = useState("en")
   return (
     <SSRProvider>
       <Container fluid className={styles.containerWrapper}>
@@ -27,9 +26,9 @@ const Home = ({lang}) => {
           </Col>
         </Row>
       </Container>
-      <LanguageSelector URLlang={lang} setRefresh={setRefresh} refresh={refresh} setLocaleLang={setLocaleLang}/>
+      <LanguageSelector URLlang={lang} setRefresh={setRefresh} refresh={refresh} />
       <HeaderContent />
-      <PrivacyForm refresh={refresh} URLlang={lang} localeLang={localeLang}/>
+      <PrivacyForm refresh={refresh} URLlang={lang} />
       <Footer />
     </SSRProvider>
   );

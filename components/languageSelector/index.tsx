@@ -6,7 +6,7 @@ import styles from "./languageSelector.module.scss";
 import { languagesMapping } from "../../constants/constants";
 import { useRouter } from "next/navigation";
 
-const LanguageSelector = ({URLlang, refresh, setRefresh, setLocaleLang}) => {
+const LanguageSelector = ({URLlang, refresh, setRefresh}) => {
 
   const { language, setLanguage } = useContext(LanguageContext)
   const { localString } = useContext(LanguageContext)
@@ -20,7 +20,6 @@ const LanguageSelector = ({URLlang, refresh, setRefresh, setLocaleLang}) => {
     setTranslateLang(lang[0]);
     setLanguage(lang[1]);
     setRefresh(!refresh);
-    setLocaleLang(lang[1])
     router.push(`/${lang[1]}`)
   }
 

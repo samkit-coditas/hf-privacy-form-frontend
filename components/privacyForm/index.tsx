@@ -33,7 +33,7 @@ import FormInputs from "../../sharedComponents/formInputs/formInputs";
 import FormSelect from "../../sharedComponents/formSelects/formSelects";
 import { useRouter } from "next/navigation";
 
-const PrivacyForm = ({refresh, URLlang, localeLang}) => {
+const PrivacyForm = ({refresh, URLlang}) => {
   const notifySuccess = () => {
     toast.success("Form submitted successfully ", {
       position: "top-right",
@@ -107,7 +107,6 @@ const PrivacyForm = ({refresh, URLlang, localeLang}) => {
 
   useEffect(() => {
     clearErrors()
-    setReload(!reload)
   },[refresh])
 
   //commenting code for future use
