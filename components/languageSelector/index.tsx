@@ -21,15 +21,15 @@ const LanguageSelector = ({URLlang, refresh, setRefresh}) => {
     setLanguage(lang[1]);
     setRefresh(!refresh);
     // console.log(lang[1])
-    // router.push(`/${lang[1]}`)
+    router.push(`/${lang[1]}`)
   }
 
-  useEffect(() => {
-    if(URLlang){
-      setTranslateLang(languagesMapping[URLlang]);
-      setLanguage(URLlang);
-    }
-  },[URLlang])
+  // useEffect(() => {
+  //   if(URLlang){
+  //     setTranslateLang(languagesMapping[URLlang]);
+  //     setLanguage(URLlang);
+  //   }
+  // },[URLlang])
 
   return(
     <Container>
@@ -37,7 +37,7 @@ const LanguageSelector = ({URLlang, refresh, setRefresh}) => {
         <Col>
         <Dropdown className={styles.languageDropdown} onSelect={(e) => handleChange(e)}>
           <Dropdown.Toggle className={styles.dropDownToggleBtn} variant="default" >
-            {defaultTranslateLang}
+            {URLlang ? languagesMapping[URLlang] : defaultTranslateLang}
           </Dropdown.Toggle>
 
            <Dropdown.Menu>
