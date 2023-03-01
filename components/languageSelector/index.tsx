@@ -1,10 +1,11 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 
 import { LanguageContext } from '../../hoc/languageProvider';
 import { Container, Row, Col, Dropdown } from "react-bootstrap";
 import styles from "./languageSelector.module.scss";
+import { languagesMapping } from "../../constants/constants";
 
-const LanguageSelector = () => {
+const LanguageSelector = ({URLlang}) => {
 
   const { language, setLanguage } = useContext(LanguageContext)
   const { localString } = useContext(LanguageContext)
@@ -16,6 +17,13 @@ const LanguageSelector = () => {
     setTranslateLang(lang[0]);
     setLanguage(lang[1]);
   }
+
+  useEffect(() => {
+    if(URLlang){
+      setTranslateLang(languagesMapping[URLlang]);
+      setLanguage(URLlang);
+    }
+  },[URLlang])
 
   return(
     <Container>

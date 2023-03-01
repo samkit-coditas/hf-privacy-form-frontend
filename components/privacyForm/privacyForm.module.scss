@@ -70,11 +70,10 @@
       margin-left: 0.2rem;
     }
   }
-
 }
 
 .agreeTerms {
-  padding-left: 1.2rem;
+  padding-left: 1.6rem;
   color: rgba(0, 0, 0, 1);
   label {
     .form-check-label {
@@ -82,7 +81,7 @@
       margin: 0.2rem 0 0.2rem 0;
       font-size: 1rem;
       color: rgba(0, 0, 0, 1);
-  }
+    }
   }
 }
 
@@ -103,18 +102,18 @@
     margin: 5px 2px 5px 2px;
     width: 135px;
     color: white;
-    background-color: #34613D;
-    font-size: .7rem;
+    background-color: #34613d;
+    font-size: 0.7rem;
   }
 
   .userInActiveBtn {
     margin: 5px;
     font-weight: 500;
     width: 135px;
-    color: #5E5E5E;
+    color: #5e5e5e;
     background-color: rgba(255, 255, 255, 0);
-    font-size: .7rem;
-    border: 1px solid #5E5E5E;
+    font-size: 0.7rem;
+    border: 1px solid #5e5e5e;
     // border-radius: 0.15rem;
 
     &:hover {
@@ -133,8 +132,8 @@
     width: 135px;
     color: white;
     background-color: rgba(0, 0, 0, 1);
-    font-size: .7rem;
-    font-size: .7rem;
+    font-size: 0.7rem;
+    font-size: 0.7rem;
     border-color: rgba(0, 0, 0, 1);
   }
 
@@ -142,10 +141,10 @@
     margin: 5px;
     font-weight: 500;
     width: 135px;
-    color: #5E5E5E;
+    color: #5e5e5e;
     background-color: rgba(255, 255, 255, 0);
-    font-size: .7rem;
-    border: 1px solid #5E5E5E;
+    font-size: 0.7rem;
+    border: 1px solid #5e5e5e;
     // border-radius: 0.15rem;
 
     &:hover {
@@ -183,15 +182,41 @@
     background-color: #147bd1;
     outline: none;
     border-width: 0;
-    height: 2.25rem;
-    border-radius: 0.5rem;
     margin-top: 0.5rem;
+    height: 3rem !important;
+    border-radius: unset;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  .ripple {
+    position: relative;
+    overflow: hidden;
   }
 
+  .ripple:before {
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.6);
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+  }
+
+  .ripple:focus:before {
+    transition: all 0.5s ease-out;
+    opacity: 0;
+    width: 160px;
+    height: 160px;
+    margin-top: -80px;
+    margin-left: -80px;
+  }
 }
 
 .successMsg {
-  color: #34613D;
+  color: #34613d;
   font-size: 0.8rem;
   font-weight: 600;
   display: flex;
@@ -225,17 +250,17 @@
       margin: 5px;
       color: white;
       background-color: rgba(0, 0, 0, 1);
-      font-size: .7rem;
+      font-size: 0.7rem;
       width: 8rem;
     }
 
     .userInActiveBtn {
       margin: 5px;
       font-weight: 500;
-      color: #5E5E5E;
+      color: #5e5e5e;
       background-color: rgba(255, 255, 255, 0);
-      font-size: .7rem;
-      border: 1px solid #5E5E5E;
+      font-size: 0.7rem;
+      border: 1px solid #5e5e5e;
       width: 8rem;
       // border-radius: 0.15rem;
 

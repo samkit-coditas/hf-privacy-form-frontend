@@ -12,7 +12,10 @@ const HeaderContent = () => {
         <Col>
           <h6 style={{paddingTop: '2rem'}}>{localString["contentTitle"]}</h6>
           <p className={styles.contentLayout}>
-            {localString["contentDescription"]}
+            {localString["contentDescriptionOne"]}
+          </p>
+          <p className={styles.contentLayout}>
+            {localString["contentDescriptionTwo"]}
           </p>
           <h6>{localString["contentFooter"]}</h6>
         </Col>

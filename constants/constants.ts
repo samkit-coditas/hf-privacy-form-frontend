@@ -5,54 +5,54 @@ export const languages = {
   español: "es",
   nederlands: "nd",
   日本語: "jp",
-  Português: 'pg',
-  中國人: 'ch',
+  Português: "pg",
+  中國人: "ch",
 };
 export const path = "./locales/languages/";
 export const cloudTypeOptions = [
   {
     id: 1,
     name: "Privacy & Data Governance Cloud",
-    value: "Privacy & Data Governance Cloud"
+    value: "Privacy & Data Governance Cloud",
   },
   {
     id: 2,
     name: "GRC & Security Assurance Cloud",
-    value: "GRC & Security Assurance Cloud"
+    value: "GRC & Security Assurance Cloud",
   },
   {
     id: 3,
     name: "Ethics & Compliance Cloud",
-    value: "Ethics & Compliance Cloud"
+    value: "Ethics & Compliance Cloud",
   },
   {
     id: 4,
     name: "ESG & Sustainability Cloud",
-    value: "ESG & Sustainability Cloud"
+    value: "ESG & Sustainability Cloud",
   },
   {
     id: 5,
     name: "Hydrafacial PreferenceChoice",
-    value: "Hydrafacial PreferenceChoice"
+    value: "Hydrafacial PreferenceChoice",
   },
   {
     id: 6,
     name: "Hydrafacial Ethics",
-    value: "Hydrafacial Ethics"
+    value: "Hydrafacial Ethics",
   },
   {
     id: 7,
     name: "Hydrafacial ESG",
-    value: "Hydrafacial ESG"
-  }
+    value: "Hydrafacial ESG",
+  },
 ];
 
 export const entityTypeOptions = [
   {
     id: 1,
     name: "Hydrafacial",
-    value: "Hydrafacial"
-  }
+    value: "Hydrafacial",
+  },
   // {
   //   id: 2,
   //   name: "Convercent by Hydrafacial",
@@ -79,76 +79,88 @@ export const countryOptions = [
   {
     id: 1,
     name: "Australia",
-    value: "Australia"
-  },
-  {
-    id: 2,
-    name: "New Zealand",
-    value: "New Zealand"
-  },
-  {
-    id: 3,
-    name: "China",
-    value: "China"
-  },
-  {
-    id: 4,
-    name: "Japan",
-    value: "Japan"
-  },
-  {
-    id: 5,
-    name: "Hong Kong",
-    value: "Hong Kong"
-  },
-  {
-    id: 6,
-    name: "Singapore",
-    value: "Singapore"
-  },
-  {
-    id: 7,
-    name: "India",
-    value: "India"
-  },
-  {
-    id: 8,
-    name: "United Kingdom",
-    value: "United Kingdom"
-  },
-  {
-    id: 9,
-    name: "United States",
-    value: "United States"
+    value: "Australia",
   },
   {
     id: 10,
     name: "Canada",
-    value: "Canada"
+    value: "Canada",
   },
   {
-    id: 11,
-    name: "Ireland",
-    value: "Ireland"
+    id: 3,
+    name: "China",
+    value: "China",
   },
   {
     id: 12,
     name: "France",
-    value: "France"
+    value: "France",
   },
   {
-    id: 13,
-    name: "Spain",
-    value: "Spain"
+    id: 15,
+    name: "Germany",
+    value: "Germany",
+  },
+  {
+    id: 5,
+    name: "Hong Kong",
+    value: "Hong Kong",
+  },
+  {
+    id: 7,
+    name: "India",
+    value: "India",
+  },
+
+  {
+    id: 11,
+    name: "Ireland",
+    value: "Ireland",
+  },
+  {
+    id: 4,
+    name: "Japan",
+    value: "Japan",
+  },
+  {
+    id: 2,
+    name: "New Zealand",
+    value: "New Zealand",
   },
   {
     id: 14,
     name: "Portugal",
-    value: "Portugal"
+    value: "Portugal",
   },
   {
-    id: 15,
-    name: "Germnay",
-    value: "Germany"
-  }
-]
+    id: 6,
+    name: "Singapore",
+    value: "Singapore",
+  },
+  {
+    id: 13,
+    name: "Spain",
+    value: "Spain",
+  },
+  {
+    id: 8,
+    name: "United Kingdom",
+    value: "United Kingdom",
+  },
+  {
+    id: 9,
+    name: "United States",
+    value: "United States",
+  },
+];
+
+export const languagesMapping = {
+  en: "English",
+  fr: "Français",
+  du: "Deutsch",
+  es: "Español",
+  nd: "Nederlands",
+  jp: "日本語",
+  pg: "Português",
+  ch: "中國人",
+};

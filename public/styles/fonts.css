@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "Aktiv Grotesk Light";
+  font-weight: 400;
+  src: url("../fonts/AktivGrotesk_Lt.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Aktiv Grotesk Medium";
+  font-weight: 500;
+  src: url("../fonts/AktivGrotesk_Md.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Aktiv Grotesk Bold";
+  src: url("../fonts/AktivGrotesk_Bd.ttf") format("truetype");
+  font-weight: 600;
+}

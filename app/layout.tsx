@@ -1,26 +1,26 @@
 "use client";
 
-import './globals.scss'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'react-toastify/dist/ReactToastify.css';
+import "./globals.scss";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "react-toastify/dist/ReactToastify.css";
 
 import { LanguageProvider } from "../hoc/languageProvider";
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
-      <head />
+      <head>
+        <link rel="stylesheet" href="/styles/fonts.css" />
+      </head>
       <body>
         <>
-          <LanguageProvider>
-            {children}
-          </LanguageProvider>
+          <LanguageProvider>{children}</LanguageProvider>
         </>
       </body>
     </html>
-  )
+  );
 }

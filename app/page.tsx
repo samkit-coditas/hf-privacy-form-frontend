@@ -1,21 +1,22 @@
-'use client'
+"use client";
 
-import styles from './page.module.scss'
-import { Container, Row, Col } from "react-bootstrap";
+import styles from "./page.module.scss";
+import { Container, Row, Col, SSRProvider } from "react-bootstrap";
 import PrivacyForm from "components/privacyForm";
 import HeaderContent from "components/headerContent";
 import LanguageSelector from "components/languageSelector";
-import Footer from "components/footer"
-import Image from 'next/image'
+import Footer from "components/footer";
+import Image from "next/image";
+import BrandingLogo from "@/public/Hydrafacial_Pos_Trademark.svg";
 
-export default function Home() {
+const Home = ({lang}) => {
   return (
-    <>
+    <SSRProvider>
       <Container fluid className={styles.containerWrapper}>
         <Row className={styles.contentWrapper}>
           <Col>
             <Image
-              src="/hydrafacial_pos_tm.png"
+              src={BrandingLogo}
               alt="Picture of the author"
               width={220}
               height={140}
@@ -23,10 +24,12 @@ export default function Home() {
           </Col>
         </Row>
       </Container>
-      <LanguageSelector />
-      <HeaderContent/>
-      <PrivacyForm/>
+      <LanguageSelector URLlang={lang}/>
+      <HeaderContent />
+      <PrivacyForm />
       <Footer />
-    </>
-  )
+    </SSRProvider>
+  );
 }
+
+export default Home;

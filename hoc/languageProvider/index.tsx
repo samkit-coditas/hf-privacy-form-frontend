@@ -19,7 +19,7 @@ export const LanguageProvider = (props: ILanguageProviderProps) => {
 
   useEffect(() => {
     setLocalString(i18n.getResourceBundle(language, "translations"));
-  }, [language]);
+  }, [i18n, language]);
 
   return (
     <LanguageContext.Provider

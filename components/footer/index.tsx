@@ -4,17 +4,18 @@ import styles from "./footer.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { LanguageContext } from "@/hoc/languageProvider";
+import BrandingLogo from "@/public/Hydrafacial_Pos_Trademark.svg";
 
 const Footer = () => {
-  const { localString } = useContext(LanguageContext);
+  const { localString, language } = useContext(LanguageContext);
 
   return (
     <Container fluid className={styles.containerWrapper}>
       <Row className={styles.contentWrapper}>
         <div className={styles.poweredWrapper}>
-          {localString["poweredBy"]}
+          {localString["poweredBy"]}{" "}
           <Image
-            src="/hydrafacial_pos_tm.png"
+            src={BrandingLogo}
             alt="Picture of the author"
             width={150}
             height={100}
@@ -48,12 +49,17 @@ const Footer = () => {
         </div>
       </Row>
       <Row className={styles.contactWrapper}>
-        <div>Contact us at dpo@hydrafacial.com</div>
+        <div>{localString["contactUsAt"]} dpo@hydrafacial.com</div>
       </Row>
       <Row>
         <div className={styles.privacyWrapper}>
-          <Link href="/privacy-notice" target="_blank" rel="noopener noreferrer">
-              Privacy Notice
+          <Link
+            href={`/privacy-notice/${language}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="policyLink"
+          >
+            {localString["privacyPolicyLink"]}
           </Link>
         </div>
       </Row>

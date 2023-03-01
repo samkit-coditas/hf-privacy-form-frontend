@@ -1,12 +1,23 @@
 .outerContainer {
-  background: transparent;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap:2rem;
+  color: #000000;
 
-  @media (max-width: 920px) {
+  @media (max-width: 768px){
+    .container {
+      // margin: 1rem;
+      width: 100% !important;
+      padding: 1rem !important;
+    }
+    .tableWrapper {
+      overflow-x: scroll;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 920px){
     .container {
       margin: 1rem;
       width: 90vw !important;
@@ -16,7 +27,7 @@
       overflow-x: scroll;
     }
   }
-  
+
   .container {
     width: 75vw;
     background-color: white;
@@ -55,6 +66,9 @@
       .contentTitle {
         font-weight: 300;
         padding-bottom: 1rem;
+      }
+      .sectionDescription {
+        font-size: 0.75rem;
       }
     }
 

@@ -9,6 +9,7 @@ const DropZone = ({ formData, setFormData }) => {
   const clickableDiv = useRef();
 
   const handleFileSelect = (e: any) => {
+    e.preventDefault();
     let files = e.target.files[0];
     setFormData({
       ...formData,
@@ -23,7 +24,7 @@ const DropZone = ({ formData, setFormData }) => {
 
   return (
     <>
-      <div className={styles.dropzone}  onClick={(e) => handleFileUpload(e)}>
+      <div className={styles.dropzone}>
         <input
           id="fileSelect"
           type="file"

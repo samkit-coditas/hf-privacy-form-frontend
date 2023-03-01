@@ -5,7 +5,7 @@ import { LanguageContext } from "../../hoc/languageProvider";
 import Link from "next/link";
 
 const NoteContent = () => {
-  const { localString } = useContext(LanguageContext);
+  const { language, localString } = useContext(LanguageContext);
 
   return (
     <Container className={styles.containerWrapper}>
@@ -19,12 +19,12 @@ const NoteContent = () => {
             {localString["noteDetailsTwo"]}
             <br />
             <br />
-            {localString["noteDetailsThree"]}
+            {localString["noteDetailsThree"]}{" "}
             <Link
-              href={"/privacy-notice"}
+              href={`/privacy-notice/${language}`}
               target="_blank"
               rel="noopener noreferrer"
-              className={styles.policyLink}
+              className="policyLink"
             >
               {localString["privacyPolicyLink"]}
             </Link>
