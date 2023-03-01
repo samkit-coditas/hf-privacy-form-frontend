@@ -11,7 +11,7 @@ const LanguageSelector = ({URLlang, refresh, setRefresh}) => {
   const { language, setLanguage } = useContext(LanguageContext)
   const { localString } = useContext(LanguageContext)
 
-  const [defaultTranslateLang, setTranslateLang] = useState('English')
+  const [defaultTranslateLang, setTranslateLang] = useState(URLlang ? languagesMapping[URLlang] : "English")
 
   const router = useRouter();
 
@@ -19,7 +19,7 @@ const LanguageSelector = ({URLlang, refresh, setRefresh}) => {
     let lang = e.split(",")
     setTranslateLang(lang[0]);
     setLanguage(lang[1]);
-    setRefresh(!refresh);
+    // setRefresh(!refresh);
     // console.log(lang[1])
     router.push(`/${lang[1]}`)
   }
@@ -37,7 +37,7 @@ const LanguageSelector = ({URLlang, refresh, setRefresh}) => {
         <Col>
         <Dropdown className={styles.languageDropdown} onSelect={(e) => handleChange(e)}>
           <Dropdown.Toggle className={styles.dropDownToggleBtn} variant="default" >
-            {URLlang ? languagesMapping[URLlang] : defaultTranslateLang}
+            {URLlang ? languagesMapping[URLlang] : "English"}
           </Dropdown.Toggle>
 
            <Dropdown.Menu>

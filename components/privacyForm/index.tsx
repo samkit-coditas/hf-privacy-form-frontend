@@ -105,9 +105,9 @@ const PrivacyForm = ({refresh, URLlang}) => {
   const [reload, setReload] = useState(false);
   const router = useRouter();
 
-  useEffect(() => {
-    clearErrors()
-  },[refresh])
+  // useEffect(() => {
+  //   clearErrors()
+  // },[refresh])
 
   //commenting code for future use
   // useEffect(() => {
