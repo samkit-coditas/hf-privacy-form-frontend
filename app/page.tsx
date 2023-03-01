@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import styles from "./page.module.scss";
 import { Container, Row, Col, SSRProvider } from "react-bootstrap";
 import PrivacyForm from "components/privacyForm";
@@ -10,6 +11,8 @@ import Image from "next/image";
 import BrandingLogo from "@/public/Hydrafacial_Pos_Trademark.svg";
 
 const Home = ({lang}) => {
+  const [refresh, setRefresh] = useState(false)
+  const [localeLang, setLocaleLang] = useState("en")
   return (
     <SSRProvider>
       <Container fluid className={styles.containerWrapper}>
@@ -24,9 +27,9 @@ const Home = ({lang}) => {
           </Col>
         </Row>
       </Container>
-      <LanguageSelector URLlang={lang}/>
+      <LanguageSelector URLlang={lang} setRefresh={setRefresh} refresh={refresh} setLocaleLang={setLocaleLang}/>
       <HeaderContent />
-      <PrivacyForm />
+      <PrivacyForm refresh={refresh} URLlang={lang} localeLang={localeLang}/>
       <Footer />
     </SSRProvider>
   );

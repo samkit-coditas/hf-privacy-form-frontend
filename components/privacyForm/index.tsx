@@ -31,8 +31,9 @@ import FormButtonInput from "../../sharedComponents/formButtonInput/formButtonIn
 import FormLabels from "../../sharedComponents/formLabels/formLabels";
 import FormInputs from "../../sharedComponents/formInputs/formInputs";
 import FormSelect from "../../sharedComponents/formSelects/formSelects";
+import { useRouter } from "next/navigation";
 
-const PrivacyForm = () => {
+const PrivacyForm = ({refresh, URLlang, localeLang}) => {
   const notifySuccess = () => {
     toast.success("Form submitted successfully ", {
       position: "top-right",
@@ -64,6 +65,7 @@ const PrivacyForm = () => {
     register,
     handleSubmit,
     formState: { errors },
+    clearErrors,
   } = useForm();
   const [formData, setFormData] = useState({
     entityName: "Hydrafacial",
@@ -100,6 +102,23 @@ const PrivacyForm = () => {
   const [sampleData, setSampleData] = useState({});
   const [isDataLoading, updateDataLoading] = useState(false);
   const captchaRef = useRef<ReCAPTCHA>(null);
+  const [reload, setReload] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    clearErrors()
+    setReload(!reload)
+  },[refresh])
+
+  //commenting code for future use
+  // useEffect(() => {
+  //   if(reload){
+  //     setTimeout(() => {
+  //       console.log("reloaded")
+  //       window.location.reload(true)
+  //     }, 1000)
+  //   }
+  // },[refresh])
 
   const userBtns = [
     // {
@@ -645,8 +664,8 @@ const PrivacyForm = () => {
             <Row>
               <div className={styles.recaptchaWrapper}>
                 <ReCAPTCHA
-                  sitekey={process.env.NEXT_PUBLIC_REACT_APP_SITE_KEY || ""}
                   ref={captchaRef}
+                  sitekey={process.env.NEXT_PUBLIC_REACT_APP_SITE_KEY || ""}
                   onChange={onCaptchaChange}
                   size="normal"
                   hl={language}

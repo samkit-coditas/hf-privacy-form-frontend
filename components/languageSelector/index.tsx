@@ -4,18 +4,24 @@ import { LanguageContext } from '../../hoc/languageProvider';
 import { Container, Row, Col, Dropdown } from "react-bootstrap";
 import styles from "./languageSelector.module.scss";
 import { languagesMapping } from "../../constants/constants";
+import { useRouter } from "next/navigation";
 
-const LanguageSelector = ({URLlang}) => {
+const LanguageSelector = ({URLlang, refresh, setRefresh, setLocaleLang}) => {
 
   const { language, setLanguage } = useContext(LanguageContext)
   const { localString } = useContext(LanguageContext)
 
   const [defaultTranslateLang, setTranslateLang] = useState('English')
 
+  const router = useRouter();
+
   const handleChange = (e: any) => {
     let lang = e.split(",")
     setTranslateLang(lang[0]);
     setLanguage(lang[1]);
+    setRefresh(!refresh);
+    setLocaleLang(lang[1])
+    router.push(`/${lang[1]}`)
   }
 
   useEffect(() => {
@@ -37,11 +43,11 @@ const LanguageSelector = ({URLlang}) => {
            <Dropdown.Menu>
             <Dropdown.Item eventKey={['English', 'en']} >English</Dropdown.Item>
             <Dropdown.Item eventKey={['Français', 'fr']} >Français</Dropdown.Item>
-            <Dropdown.Item eventKey={['Deutsch','du']}>Deutsch</Dropdown.Item>
+            <Dropdown.Item eventKey={['Deutsch','de']}>Deutsch</Dropdown.Item>
             <Dropdown.Item eventKey={['Español', 'es']}>Español</Dropdown.Item>
-            <Dropdown.Item eventKey={['日本語', 'jp']}>日本語</Dropdown.Item >
-            <Dropdown.Item eventKey={['Português', 'pg']}>Português</Dropdown.Item >
-            <Dropdown.Item eventKey={['中國人', 'ch']}>中國人</Dropdown.Item >
+            <Dropdown.Item eventKey={['日本語', 'ja']}>日本語</Dropdown.Item >
+            <Dropdown.Item eventKey={['Português', 'pt']}>Português</Dropdown.Item >
+            <Dropdown.Item eventKey={['中國人', 'zh']}>中國人</Dropdown.Item >
           </Dropdown.Menu>
         </Dropdown>
         </Col>

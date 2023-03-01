@@ -1,12 +1,12 @@
 export const languages = {
   english: "en",
   français: "fr",
-  deutsch: "du",
+  deutsch: "de",
   español: "es",
   nederlands: "nd",
-  日本語: "jp",
-  Português: "pg",
-  中國人: "ch",
+  日本語: "ja",
+  Português: "pt",
+  中國人: "zh",
 };
 export const path = "./locales/languages/";
 export const cloudTypeOptions = [
@@ -157,10 +157,10 @@ export const countryOptions = [
 export const languagesMapping = {
   en: "English",
   fr: "Français",
-  du: "Deutsch",
+  de: "Deutsch",
   es: "Español",
   nd: "Nederlands",
-  jp: "日本語",
-  pg: "Português",
-  ch: "中國人",
+  ja: "日本語",
+  pt: "Português",
+  zh: "中國人",
 };

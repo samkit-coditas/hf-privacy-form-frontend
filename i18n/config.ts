@@ -9,7 +9,7 @@ i18n.use(initReactI18next).init({
     en: {
       translations: require(`${path}${languages.english}/${languages.english}.json`),
     },
-    du: {
+    de: {
       translations: require(`${path}${languages.deutsch}/${languages.deutsch}.json`),
     },
     fr: {
@@ -18,13 +18,13 @@ i18n.use(initReactI18next).init({
     es: {
       translations: require(`${path}${languages.español}/${languages.español}.json`),
     },
-    jp: {
+    ja: {
       translations: require(`${path}${languages.日本語}/${languages.日本語}.json`),
     },
-    pg: {
+    pt: {
       translations: require(`${path}${languages.Português}/${languages.Português}.json`),
     },
-    ch: {
+    zh: {
       translations: require(`${path}${languages.中國人}/${languages.中國人}.json`),
     }
   },

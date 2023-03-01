@@ -38,7 +38,7 @@
   "fileMsg": "Dateien größer als 4 werden nicht unterstützt.",
   "agreeTerms": "Ik begrijp het bovenstaande voordat ik mijn verzoek indien",
   "submit": "Indienen",
-  "requiredFieldError": "This field is required",
+  "requiredFieldError": "dit veld is verplicht",
   "invalidEmail": "Email is ongeldig",
   "invalidPhone": "Ongeldig telefoonnummer",
   "fileSupport": "Ondersteunde bestandstypen: JPG, JPEG, PNG, SVG, GIF, PDF",
