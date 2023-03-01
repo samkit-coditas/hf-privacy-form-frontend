@@ -33,7 +33,7 @@ import FormInputs from "../../sharedComponents/formInputs/formInputs";
 import FormSelect from "../../sharedComponents/formSelects/formSelects";
 import { useRouter } from "next/navigation";
 
-const PrivacyForm = ({refresh, URLlang}) => {
+const PrivacyForm = () => {
   const notifySuccess = () => {
     toast.success("Form submitted successfully ", {
       position: "top-right",
@@ -104,10 +104,6 @@ const PrivacyForm = ({refresh, URLlang}) => {
   const captchaRef = useRef<ReCAPTCHA>(null);
   const [reload, setReload] = useState(false);
   const router = useRouter();
-
-  // useEffect(() => {
-  //   clearErrors()
-  // },[refresh])
 
   //commenting code for future use
   // useEffect(() => {
@@ -344,13 +340,13 @@ const PrivacyForm = ({refresh, URLlang}) => {
           <form onSubmit={handleSubmit(onSubmit)}>
             {/* <Row className={styles.rowWrapper}>
             <FormLabels
-              labelName={localString["chooseEntity"]}
+              labelName={localString?.["chooseEntity"]}
               required={true}
             />
             <FormSelect
               options={entityTypeOptions}
               fieldName={"entityName"}
-              required={localString['requiredFieldError']}
+              required={localString?.['requiredFieldError']}
               onChange={(e: any) => setFormData({...formData, entityName: e.target.value })}
             />
             {errors.entityName ? (
@@ -367,7 +363,7 @@ const PrivacyForm = ({refresh, URLlang}) => {
               <Col>
                 <Row>
                   <FormLabels
-                    labelName={localString["userType"]}
+                    labelName={localString?.["userType"]}
                     required={true}
                   />
                 </Row>
@@ -379,7 +375,7 @@ const PrivacyForm = ({refresh, URLlang}) => {
                   />
                   {userTypeErr && (
                     <p className={styles.errMsg}>
-                      {localString["requiredFieldError"]}
+                      {localString?.["requiredFieldError"]}
                     </p>
                   )}
                 </Row>
@@ -388,7 +384,7 @@ const PrivacyForm = ({refresh, URLlang}) => {
             {/* {showCloud && (
               <Row className={styles.rowWrapper}>
                 <FormLabels
-                  labelName={localString["cloudType"]}
+                  labelName={localString?.["cloudType"]}
                   required={false}
                 />
                 <FormSelect
@@ -402,11 +398,11 @@ const PrivacyForm = ({refresh, URLlang}) => {
               </Row>
             )} */}
             <Row className={styles.rowWrapper}>
-              <FormLabels labelName={localString["country"]} required={true} />
+              <FormLabels labelName={localString?.["country"]} required={true} />
               <FormSelect
                 options={countryOptions}
                 fieldName={"country"}
-                required={localString["requiredFieldError"]}
+                required={localString?.["requiredFieldError"]}
                 onChange={(e: any) =>
                   setFormData({ ...formData, country: e.target.value })
                 }
@@ -424,7 +420,7 @@ const PrivacyForm = ({refresh, URLlang}) => {
               <Col>
                 <Row>
                   <FormLabels
-                    labelName={localString["requestType"]}
+                    labelName={localString?.["requestType"]}
                     required={true}
                   />
                 </Row>
@@ -436,7 +432,7 @@ const PrivacyForm = ({refresh, URLlang}) => {
                   />
                   {requestTypeErr && (
                     <p className={styles.errMsg}>
-                      {localString["requiredFieldError"]}
+                      {localString?.["requiredFieldError"]}
                     </p>
                   )}
                 </Row>
@@ -444,7 +440,7 @@ const PrivacyForm = ({refresh, URLlang}) => {
             </Row>
             <Row className={styles.rowWrapper}>
               <label className={styles.labelWrapper}>
-                {localString["firstName"]}
+                {localString?.["firstName"]}
                 <span className={styles.requiredField}>*</span>
               </label>
               <input
@@ -452,7 +448,7 @@ const PrivacyForm = ({refresh, URLlang}) => {
                 type="text"
                 placeholder=""
                 {...register("firstName", {
-                  required: localString["requiredFieldError"],
+                  required: localString?.["requiredFieldError"],
                   onChange: (e: any) =>
                     setFormData({ ...formData, firstName: e.target.value }),
                   maxLength: 80,
@@ -468,7 +464,7 @@ const PrivacyForm = ({refresh, URLlang}) => {
             </Row>
             <Row className={styles.rowWrapper}>
               <label className={styles.labelWrapper}>
-                {localString["lastName"]}
+                {localString?.["lastName"]}
                 <span className={styles.requiredField}>*</span>
               </label>
               <input
@@ -476,7 +472,7 @@ const PrivacyForm = ({refresh, URLlang}) => {
                 type="text"
                 placeholder=""
                 {...register("lastName", {
-                  required: localString["requiredFieldError"],
+                  required: localString?.["requiredFieldError"],
                   onChange: (e: any) =>
                     setFormData({ ...formData, lastName: e.target.value }),
                   maxLength: 100,
@@ -492,7 +488,7 @@ const PrivacyForm = ({refresh, URLlang}) => {
             </Row>
             <Row className={styles.rowWrapper}>
               <label className={styles.labelWrapper}>
-                {localString["email"]}
+                {localString?.["email"]}
                 <span className={styles.requiredField}>*</span>
               </label>
               <input
@@ -500,12 +496,12 @@ const PrivacyForm = ({refresh, URLlang}) => {
                 type="email"
                 placeholder=""
                 {...register("email", {
-                  required: localString["requiredFieldError"],
+                  required: localString?.["requiredFieldError"],
                   onChange: (e: any) =>
                     setFormData({ ...formData, email: e.target.value }),
                   pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                    message: localString["invalidEmail"],
+                    message: localString?.["invalidEmail"],
                   },
                 })}
               />
@@ -522,7 +518,7 @@ const PrivacyForm = ({refresh, URLlang}) => {
             </Row>
             <Row className={styles.rowWrapper}>
               <label className={styles.labelWrapper}>
-                {localString["phone"]}
+                {localString?.["phone"]}
                 <span className={styles.requiredField}>*</span>
               </label>
               <input
@@ -530,13 +526,13 @@ const PrivacyForm = ({refresh, URLlang}) => {
                 type="text"
                 placeholder=""
                 {...register("phone", {
-                  required: localString["requiredFieldError"],
+                  required: localString?.["requiredFieldError"],
                   onChange: (e: any) =>
                     setFormData({ ...formData, phone: e.target.value }),
                   pattern: {
                     value: /^(\+\d{1,3}[- ]?)?\d{10}$/,
-                    message: localString["invalidPhone"]
-                  }
+                    message: localString?.["invalidPhone"],
+                  },
                 })}
               />
               {errors.phone ? (
@@ -553,7 +549,7 @@ const PrivacyForm = ({refresh, URLlang}) => {
             {/* {(empDetails || jobApplicantFieldStatus) && (
               <Row className={styles.rowWrapper}>
                 <FormLabels
-                  labelName={localString["jobtitle"]}
+                  labelName={localString?.["jobtitle"]}
                   required={false}
                 />
                 <FormInputs
@@ -569,7 +565,7 @@ const PrivacyForm = ({refresh, URLlang}) => {
               <>
                 <Row className={styles.rowWrapper}>
                   <FormLabels
-                    labelName={localString["startDate"]}
+                    labelName={localString?.["startDate"]}
                     required={false}
                   />
                   <FormInputs
@@ -585,7 +581,7 @@ const PrivacyForm = ({refresh, URLlang}) => {
                 </Row>
                 <Row className={styles.rowWrapper}>
                   <FormLabels
-                    labelName={localString["endDate"]}
+                    labelName={localString?.["endDate"]}
                     required={false}
                   />
                   <FormInputs
@@ -603,13 +599,13 @@ const PrivacyForm = ({refresh, URLlang}) => {
             )} */}
             <Row className={styles.rowWrapper}>
               <FormLabels
-                labelName={localString["requestDetails"]}
+                labelName={localString?.["requestDetails"]}
                 required={true}
               />
               <textarea
                 className={styles.textInputField}
                 {...register("requestDetails", {
-                  required: localString["requiredFieldError"],
+                  required: localString?.["requiredFieldError"],
                   onChange: (e: any) =>
                     setFormData({
                       ...formData,
@@ -632,16 +628,16 @@ const PrivacyForm = ({refresh, URLlang}) => {
             </Row>
             <Row className={styles.rowWrapper}>
               <FormLabels
-                labelName={localString["agreeTermsLabel"]}
+                labelName={localString?.["agreeTermsLabel"]}
                 required={false}
               />
               <Form.Check
                 type="checkbox"
                 id={`default-checkbox`}
-                label={localString["agreeTerms"]}
+                label={localString?.["agreeTerms"]}
                 className={styles.agreeTerms}
                 {...register("termsAggred", {
-                  required: localString["requiredFieldError"],
+                  required: localString?.["requiredFieldError"],
                   onChange: (e: any) => {
                     setFormData({
                       ...formData,
@@ -683,8 +679,8 @@ const PrivacyForm = ({refresh, URLlang}) => {
                 disabled={isDataLoading}
               >
                 {isDataLoading
-                  ? localString["pleaseWait"]
-                  : localString["submit"]}
+                  ? localString?.["pleaseWait"]
+                  : localString?.["submit"]}
               </Button>
             </Row>
           </form>

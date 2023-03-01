@@ -13,7 +13,7 @@ const Footer = () => {
     <Container fluid className={styles.containerWrapper}>
       <Row className={styles.contentWrapper}>
         <div className={styles.poweredWrapper}>
-          {localString["poweredBy"]}{" "}
+          {localString?.["poweredBy"]}{" "}
           <Image
             src={BrandingLogo}
             alt="Picture of the author"
@@ -24,7 +24,7 @@ const Footer = () => {
       </Row>
       <Row className={styles.contentWrapper}>
         <div className={styles.footerTextWrapper}>
-          {localString["footerTitle"]}
+          {localString?.["footerTitle"]}
         </div>
       </Row>
       <Row className={styles.contentWrapper}>
@@ -50,7 +50,7 @@ const Footer = () => {
       </Row>
       <Row className={styles.contactWrapper}>
         <div>
-          {localString["contactUsAt"]}{" "}
+          {localString?.["contactUsAt"]}{" "}
           <b>dpo@hydrafacial.com</b>
         </div>
       </Row>
@@ -62,7 +62,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="policyLink"
           >
-            {localString["privacyPolicyLink"]}
+            {localString?.["privacyPolicyLink"]}
           </Link>
         </div>
       </Row>

@@ -33,10 +33,10 @@ const DropZone = ({ formData, setFormData }) => {
           onChange={(e: any) => handleFileSelect(e)}
           accept="image/png, image/jpeg, image/jpg, image/gif, image/svg, application/pdf"
         />
-        <label htmlFor="fileSelect">{localString["attachments"]}</label>
+        <label htmlFor="fileSelect">{localString?.["attachments"]}</label>
         <div className={styles.uploadMessage}>
-          {/* <p className={styles.uploadText}>{localString["fileMsg"]}</p> */}
-          <p className={styles.uploadText}>{localString["fileSupport"]}</p>
+          {/* <p className={styles.uploadText}>{localString?.["fileMsg"]}</p> */}
+          <p className={styles.uploadText}>{localString?.["fileSupport"]}</p>
         </div>
       </div>
       {/* Pass the selectect or dropped files as props */}

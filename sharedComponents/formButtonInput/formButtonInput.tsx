@@ -20,7 +20,7 @@ const FormButtonInput = ({
             <FormButtons
               button={button}
               handleClick={() => handleButtonChange(button.name)}
-              buttonName={localString[button.name] || ''}
+              buttonName={localString?.[button.name] || ''}
             />
           </div>
         )

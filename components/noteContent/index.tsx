@@ -11,22 +11,22 @@ const NoteContent = () => {
     <Container className={styles.containerWrapper}>
       <Row>
         <Col>
-          <h6>{localString["pleaseNote"]}</h6>
+          <h6>{localString?.["pleaseNote"]}</h6>
           <p className={styles.contentLayout}>
-            {localString["noteDetailsOne"]}
+            {localString?.["noteDetailsOne"]}
             <br />
             <br />
-            {localString["noteDetailsTwo"]}
+            {localString?.["noteDetailsTwo"]}
             <br />
             <br />
-            {localString["noteDetailsThree"]}{" "}
+            {localString?.["noteDetailsThree"]}{" "}
             <Link
               href={`/privacy-notice/${language}`}
               target="_blank"
               rel="noopener noreferrer"
               className="policyLink"
             >
-              {localString["privacyPolicyLink"]}
+              {localString?.["privacyPolicyLink"]}
             </Link>
           </p>
         </Col>

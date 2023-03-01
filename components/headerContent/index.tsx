@@ -10,14 +10,14 @@ const HeaderContent = () => {
     <Container className={styles.containerWrapper}>
       <Row>
         <Col>
-          <h6 style={{paddingTop: '2rem'}}>{localString["contentTitle"]}</h6>
+          <h6 style={{paddingTop: '2rem'}}>{localString?.["contentTitle"]}</h6>
           <p className={styles.contentLayout}>
-            {localString["contentDescriptionOne"]}
+            {localString?.["contentDescriptionOne"]}
           </p>
           <p className={styles.contentLayout}>
-            {localString["contentDescriptionTwo"]}
+            {localString?.["contentDescriptionTwo"]}
           </p>
-          <h6>{localString["contentFooter"]}</h6>
+          <h6>{localString?.["contentFooter"]}</h6>
         </Col>
       </Row>
     </Container>

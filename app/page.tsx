@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./page.module.scss";
 import { Container, Row, Col, SSRProvider } from "react-bootstrap";
 import PrivacyForm from "components/privacyForm";
@@ -10,8 +10,9 @@ import Footer from "components/footer";
 import Image from "next/image";
 import BrandingLogo from "@/public/Hydrafacial_Pos_Trademark.svg";
 
-const Home = ({lang}) => {
-  const [refresh, setRefresh] = useState(false)
+const Home = ({ lang }) => {
+  const [refresh, setRefresh] = useState(false);
+
   return (
     <SSRProvider>
       <Container fluid className={styles.containerWrapper}>
@@ -26,12 +27,16 @@ const Home = ({lang}) => {
           </Col>
         </Row>
       </Container>
-      <LanguageSelector URLlang={lang} setRefresh={setRefresh} refresh={refresh} />
+      <LanguageSelector
+        URLlang={lang}
+        setRefresh={setRefresh}
+        refresh={refresh}
+      />
       <HeaderContent />
-      <PrivacyForm refresh={refresh} URLlang={lang} />
+      <PrivacyForm />
       <Footer />
     </SSRProvider>
   );
-}
+};
 
 export default Home;
