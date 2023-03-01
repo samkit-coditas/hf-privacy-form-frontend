@@ -17,9 +17,10 @@ const LanguageSelector = ({URLlang, refresh, setRefresh}) => {
 
   const handleChange = (e: any) => {
     let lang = e.split(",")
-    setTranslateLang(lang[0]);
-    setLanguage(lang[1]);
-    setRefresh(!refresh);
+    // setTranslateLang(lang[0]);
+    // setLanguage(lang[1]);
+    // // setRefresh(!refresh);
+    // console.log(lang[1])
     router.push(`/${lang[1]}`)
   }
 
