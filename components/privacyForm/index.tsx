@@ -361,10 +361,10 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
         locale: "en",
       };
 
-      userFileData.append(`files.attachment`, formData.attachment);
+      // userFileData.append(`files.attachment`, formData.attachment);
 
       if (formData.userType && formData.requestType) {
-        const response = await createNewUser(details, userFileData);
+        const response = await createNewUser(details, formData.attachment ? formData.attachment : []);
         updateDataLoading(false);
         if (response) {
           notifySuccess();
