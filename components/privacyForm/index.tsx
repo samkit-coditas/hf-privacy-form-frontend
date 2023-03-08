@@ -572,8 +572,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
                   pattern: {
                     value: /^([^0-9]*)$/g,
                     message: localString?.["invalidName"],
-                  },
-                  maxLength: 100,
+                  }
                 })}
               />
               {errors.firstName ? (
@@ -603,8 +602,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
                   pattern: {
                     value: /^([^0-9]*)$/g,
                     message: localString?.["invalidName"],
-                  },
-                  maxLength: 100
+                  }
                 })}
               />
               {errors.lastName ? (
