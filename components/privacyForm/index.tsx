@@ -428,7 +428,6 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
   }, [formData]);
 
   const handleCountry = (e: any) => {
-    console.log(e.target.value)
     setFormData({ ...formData, country: e.target.value })
     if(e.target.value === "Japan"){
       if (
