@@ -13,7 +13,6 @@ import styles from "./privacyForm.module.scss";
 import { useForm, Resolver } from "react-hook-form";
 import countryList from "react-select-country-list";
 import NoteContent from "../noteContent";
-import ReCAPTCHA from "react-google-recaptcha";
 import DragAndDrop from "../dragAndDrop";
 import { LanguageContext } from "../../hoc/languageProvider";
 import {
@@ -33,9 +32,9 @@ import FormInputs from "../../sharedComponents/formInputs/formInputs";
 import FormSelect from "../../sharedComponents/formSelects/formSelects";
 import { useRouter } from "next/navigation";
 
-const PrivacyForm = () => {
+const PrivacyForm = ({ ReCAPTCHA }: any) => {
   const notifySuccess = () => {
-    toast.success("Form submitted successfully ", {
+    toast.success(localString["formSuccess"], {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -48,7 +47,20 @@ const PrivacyForm = () => {
   };
 
   const notifyFailure = () => {
-    toast.error("Failed to submit form", {
+    toast.error(localString["formErr"], {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
+
+  const emailPhoneFieldFailure = () => {
+    toast.error(localString["emailPhoneInvalid"], {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -66,7 +78,7 @@ const PrivacyForm = () => {
     handleSubmit,
     formState: { errors },
     clearErrors,
-  } = useForm();
+  } = useForm({ mode: "onChange" });
   const [formData, setFormData] = useState({
     entityName: "Hydrafacial",
     userType: "",
@@ -104,16 +116,6 @@ const PrivacyForm = () => {
   const captchaRef = useRef<ReCAPTCHA>(null);
   const [reload, setReload] = useState(false);
   const router = useRouter();
-
-  //commenting code for future use
-  // useEffect(() => {
-  //   if(reload){
-  //     setTimeout(() => {
-  //       console.log("reloaded")
-  //       window.location.reload(true)
-  //     }, 1000)
-  //   }
-  // },[refresh])
 
   const userBtns = [
     // {
@@ -174,13 +176,13 @@ const PrivacyForm = () => {
       name: "deletionRequest",
       active: false,
     },
+    // {
+    //   id: 6,
+    //   name: "fileComplaint",
+    //   active: false,
+    // },
     {
       id: 6,
-      name: "fileComplaint",
-      active: false,
-    },
-    {
-      id: 7,
       name: "marketingUnsubscribe",
       active: false,
     },
@@ -203,11 +205,11 @@ const PrivacyForm = () => {
     if (userType === "jobApplicant") {
       // setCloud(true);
       setEmpDetails(false);
-      setRequestTypes(requestBtns.slice(0, 6));
+      setRequestTypes(requestBtns.slice(0, 5));
     } else if (userType === "employee") {
       setEmpDetails(true);
       // setCloud(false);
-      setRequestTypes(requestBtns.slice(0, 6));
+      setRequestTypes(requestBtns.slice(0, 5));
     } else if (userType === "provider") {
       setEmpDetails(false);
       // setCloud(false);
@@ -232,14 +234,14 @@ const PrivacyForm = () => {
       formData.userType === "employee" ||
       formData.userType === "jobApplicant"
     ) {
-      requestBtns.slice(0, 6).forEach((element) => {
+      requestBtns.slice(0, 5).forEach((element) => {
         if (element.name === requestType) {
           element.active = true;
         } else {
           element.active = false;
         }
       });
-      setRequestTypes(requestBtns.slice(0, 6));
+      setRequestTypes(requestBtns.slice(0, 5));
     } else {
       requestBtns.forEach((element, index) => {
         if (element.name === requestType) {
@@ -258,55 +260,86 @@ const PrivacyForm = () => {
 
   const getUsers = async () => {
     const response = await getUserDetails();
-    // setSampleData(response?.data?.data[0]?.attributes)
   };
 
   const onSubmit = async (data: any) => {
-    updateDataLoading(true);
-    if (formData.userType === "") {
-      setUserTypeErr(true);
-    } else {
-      setUserTypeErr(false);
-    }
-    if (formData.requestType === "") {
-      setRequestTypeErr(true);
-    } else {
-      setRequestTypeErr(false);
-    }
-    let userFileData = new FormData();
-    let userFormData = new FormData();
-
-    let details = {
-      entity_name: formData.entityName,
-      user_type: formData.userType,
-      // cloud_type: formData.cloudType,
-      country: formData.country,
-      request_type: formData.requestType,
-      first_name: formData.firstName,
-      last_name: formData.lastName,
-      email: formData.email,
-      phone: formData.phone,
-      jobtitle: formData.jobtitle || "",
-      employment_start_date: formData.employmentStartDate || null,
-      employment_end_date: formData.employmentEndDate || null,
-      applied_for: "",
-      request_details: formData.requestDetails,
-      terms_aggred: formData.termsAggred,
-      locale: "en",
-    };
-
-    userFileData.append(`files.attachment`, formData.attachment);
-
-    if (formData.userType && formData.requestType) {
-      const response = await createNewUser(details, userFileData);
+    if (!formData.email && !formData.phone) {
+      emailPhoneFieldFailure();
       updateDataLoading(false);
-      if (response) {
-        notifySuccess();
+    } else {
+      updateDataLoading(true);
+      if (formData.userType === "") {
+        setUserTypeErr(true);
       } else {
-        notifyFailure();
+        setUserTypeErr(false);
+      }
+      if (formData.requestType === "") {
+        setRequestTypeErr(true);
+      } else {
+        setRequestTypeErr(false);
+      }
+      let userFileData = new FormData();
+
+      let details = {
+        entity_name: formData.entityName,
+        user_type: formData.userType,
+        // cloud_type: formData.cloudType,
+        country: formData.country,
+        request_type: formData.requestType,
+        first_name: formData.firstName,
+        last_name: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+        jobtitle: formData.jobtitle || "",
+        employment_start_date: formData.employmentStartDate || null,
+        employment_end_date: formData.employmentEndDate || null,
+        applied_for: "",
+        request_details: formData.requestDetails,
+        terms_aggred: formData.termsAggred,
+        locale: "en",
+      };
+
+      userFileData.append(`files.attachment`, formData.attachment);
+
+      if (formData.userType && formData.requestType) {
+        const response = await createNewUser(details, userFileData);
+        updateDataLoading(false);
+        if (response) {
+          notifySuccess();
+        } else {
+          notifyFailure();
+        }
       }
     }
   };
+
+  const handleRequestClickScroll = () => {
+    const element = document.getElementById("requestTypeDiv");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+    updateDataLoading(false);
+  };
+
+  const handleUserClickScroll = () => {
+    const element = document.getElementById("userTypeDiv");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+    updateDataLoading(false);
+  };
+
+  useEffect(() => {
+    if (requestTypeErr) {
+      handleRequestClickScroll();
+    }
+  }, [requestTypeErr]);
+
+  useEffect(() => {
+    if (userTypeErr) {
+      handleUserClickScroll();
+    }
+  }, [userTypeErr]);
 
   useEffect(() => {
     setUserTypes(userBtns);
@@ -359,7 +392,7 @@ const PrivacyForm = () => {
               </>
             ) : null}
           </Row> */}
-            <Row className={styles.rowWrapper}>
+            <Row className={styles.rowWrapper} id="userTypeDiv">
               <Col>
                 <Row>
                   <FormLabels
@@ -398,7 +431,10 @@ const PrivacyForm = () => {
               </Row>
             )} */}
             <Row className={styles.rowWrapper}>
-              <FormLabels labelName={localString?.["country"]} required={true} />
+              <FormLabels
+                labelName={localString?.["country"]}
+                required={true}
+              />
               <FormSelect
                 options={countryOptions}
                 fieldName={"country"}
@@ -416,7 +452,7 @@ const PrivacyForm = () => {
                 </>
               ) : null}
             </Row>
-            <Row className={styles.rowWrapper}>
+            <Row className={styles.rowWrapper} id="requestTypeDiv">
               <Col>
                 <Row>
                   <FormLabels
@@ -451,12 +487,19 @@ const PrivacyForm = () => {
                   required: localString?.["requiredFieldError"],
                   onChange: (e: any) =>
                     setFormData({ ...formData, firstName: e.target.value }),
-                  maxLength: 80,
+                  pattern: {
+                    value: /^([^0-9]*)$/g,
+                    message: localString?.["invalidName"],
+                  },
+                  maxLength: 100,
                 })}
               />
               {errors.firstName ? (
                 <>
                   {errors.firstName.type === "required" && (
+                    <p className={styles.errMsg}>{errors.firstName.message}</p>
+                  )}
+                  {errors.firstName.type === "pattern" && (
                     <p className={styles.errMsg}>{errors.firstName.message}</p>
                   )}
                 </>
@@ -475,12 +518,19 @@ const PrivacyForm = () => {
                   required: localString?.["requiredFieldError"],
                   onChange: (e: any) =>
                     setFormData({ ...formData, lastName: e.target.value }),
-                  maxLength: 100,
+                  pattern: {
+                    value: /^([^0-9]*)$/g,
+                    message: localString?.["invalidName"],
+                  },
+                  maxLength: 100
                 })}
               />
               {errors.lastName ? (
                 <>
                   {errors.lastName.type === "required" && (
+                    <p className={styles.errMsg}>{errors.lastName.message}</p>
+                  )}
+                  {errors.lastName.type === "pattern" && (
                     <p className={styles.errMsg}>{errors.lastName.message}</p>
                   )}
                 </>
@@ -489,29 +539,25 @@ const PrivacyForm = () => {
             <Row className={styles.rowWrapper}>
               <label className={styles.labelWrapper}>
                 {localString?.["email"]}
-                <span className={styles.requiredField}>*</span>
               </label>
               <input
                 className={styles.inputField}
                 type="email"
                 placeholder=""
                 {...register("email", {
-                  required: localString?.["requiredFieldError"],
+                  required: false,
                   onChange: (e: any) =>
                     setFormData({ ...formData, email: e.target.value }),
                   pattern: {
-                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                    value: /^[a-zA-Z0-9]+(?:[._-][a-zA-Z0-9]+)*@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$/gm,
                     message: localString?.["invalidEmail"],
                   },
                 })}
               />
               {errors.email ? (
                 <>
-                  {errors.email.type === "required" && (
-                    <p className={styles.errMsg}>{errors.email.message}</p>
-                  )}
                   {errors.email.type === "pattern" && (
-                    <p className={styles.errMsg}>{errors.email.message}</p>
+                    <p className={styles.errMsg}>{errors?.email?.message}</p>
                   )}
                 </>
               ) : null}
@@ -519,14 +565,13 @@ const PrivacyForm = () => {
             <Row className={styles.rowWrapper}>
               <label className={styles.labelWrapper}>
                 {localString?.["phone"]}
-                <span className={styles.requiredField}>*</span>
               </label>
               <input
                 className={styles.inputField}
                 type="text"
                 placeholder=""
                 {...register("phone", {
-                  required: localString?.["requiredFieldError"],
+                  required: false,
                   onChange: (e: any) =>
                     setFormData({ ...formData, phone: e.target.value }),
                   pattern: {
@@ -612,6 +657,7 @@ const PrivacyForm = () => {
                       requestDetails: e.target.value,
                     }),
                 })}
+                maxLength="5000"
               />
               {errors.requestDetails ? (
                 <>

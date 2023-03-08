@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useId } from "react";
 import styles from "./formSelects.module.scss";
 import { useForm } from "react-hook-form";
 
-const FormSelect = ({ options, fieldName, required, onChange, registerProps }) => {
+const FormSelect = ({
+  options,
+  fieldName,
+  required,
+  onChange,
+  registerProps,
+}) => {
   const { register } = useForm();
   const formControl = registerProps || register;
   return (
@@ -14,16 +20,15 @@ const FormSelect = ({ options, fieldName, required, onChange, registerProps }) =
           required: required,
           onChange: onChange,
         })}
+        id={useId()}
       >
         <option disabled selected value="">
           {" "}
         </option>
         {options?.map((option: any) => (
-          <>
-            <option key={option.id} value={option.value}>
-              {option.name}
-            </option>
-          </>
+          <option key={option.id} value={option.value}>
+            {option.name}
+          </option>
         ))}
       </select>
     </>

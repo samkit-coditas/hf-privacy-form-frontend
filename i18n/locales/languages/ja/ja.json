@@ -49,5 +49,12 @@
   "poweredBy": "搭載",
   "contactUsAt": "お問い合わせ先",
   "agreeTermsLabel": "以上をご理解の上、お申し込みください",
-  "pleaseWait": "お待ちください..."
+  "pleaseWait": "お待ちください...",
+  "viewPrivacyNotice": "プライバシー通知を表示",
+  "viewPrivacyRequestForm" : "プライバシーリクエストフォームを見る",
+  "language": "言語",
+  "formSuccess": "フォームは正常に送信されました",
+  "formErr": "フォームの送信に失敗しました",
+  "emailPhoneInvalid": "メールまたは電話番号を入力してください",
+  "invalidName": "番号は使用できません。有効な名前を入力してください"
 }

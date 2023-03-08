@@ -49,5 +49,12 @@
   "poweredBy": "Alimenté par",
   "contactUsAt": "Contactez-nous à",
   "agreeTermsLabel": "Veuillez confirmer votre compréhension de ce qui précède avant de soumettre votre demande",
-  "pleaseWait": "S'il vous plaît, attendez..."
+  "pleaseWait": "S'il vous plaît, attendez...",
+  "viewPrivacyNotice": "Afficher l'avis de confidentialité",
+  "viewPrivacyRequestForm" : "Afficher le formulaire de demande de confidentialité",
+  "language": "Langue",
+  "formSuccess": "Formulaire envoyé avec succès",
+  "formErr": "Échec de l'envoi du formulaire",
+  "emailPhoneInvalid": "Entrez un email ou un numéro de téléphone",
+  "invalidName": "Numéros non autorisés. Veuillez entrer un nom valide"
 }

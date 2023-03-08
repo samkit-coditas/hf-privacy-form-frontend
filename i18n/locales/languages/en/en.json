@@ -49,5 +49,12 @@
   "poweredBy": "Powered by",
   "contactUsAt": "Contact us at",
   "agreeTermsLabel": "Please confirm your understanding of the above before submitting your request",
-  "pleaseWait": "please wait..."
+  "pleaseWait": "please wait...",
+  "viewPrivacyNotice": "View Privacy Notice",
+  "viewPrivacyRequestForm": "View Privacy Request Form",
+  "language": "Language",
+  "formSuccess": "Form submitted successfully",
+  "formErr": "Failed to submit form",
+  "emailPhoneInvalid": "Enter Email or Phone number",
+  "invalidName": "Numbers not allowed. Please enter a valid name"
 }

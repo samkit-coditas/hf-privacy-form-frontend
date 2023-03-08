@@ -1,20 +1,33 @@
-.languageDropdown {
+.languageWrapper {
   display: flex;
   justify-content: flex-end;
+  padding-right: 11rem;
   margin-top: 1rem;
 
-  .dropDownToggleBtn {
-    border: 0.1rem solid black;
-    background-color: white;
-    color: black;
-    width: 10rem;
-    height: 2rem;
-    position: absolute;
-    padding: 0.1rem 0 1rem 1rem;
-    border: 1px solid #737373;
-    text-align: left;
-    &::after {
-      display: none !important; 
+  .title {
+    margin-right: 0.5rem;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1);
+  }
+
+  .languageDropdown {
+    .dropDownToggleBtn {
+      border: 0.1rem solid black;
+      background-color: white;
+      color: black;
+      width: 10rem;
+      height: 2rem;
+      position: absolute;
+      padding: 0.1rem 0 1rem 1rem;
+      border: 1px solid #737373;
+      text-align: left;
+      &::after {
+        display: none !important;
+      }
     }
   }
+}
+.linkToPrivacyNoticeWrapper {
+  margin-top: 1rem;
 }

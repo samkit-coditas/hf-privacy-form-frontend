@@ -8,10 +8,11 @@ import HeaderContent from "components/headerContent";
 import LanguageSelector from "components/languageSelector";
 import Footer from "components/footer";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import BrandingLogo from "@/public/Hydrafacial_Pos_Trademark.svg";
 
-const Home = ({ lang }) => {
-  const [refresh, setRefresh] = useState(false);
+const Home = ({ lang }: any) => {
+  const ReCAPTCHA = dynamic(() => import("react-google-recaptcha"));
 
   return (
     <SSRProvider>
@@ -27,13 +28,9 @@ const Home = ({ lang }) => {
           </Col>
         </Row>
       </Container>
-      <LanguageSelector
-        URLlang={lang}
-        setRefresh={setRefresh}
-        refresh={refresh}
-      />
+      <LanguageSelector URLlang={lang} privacyPage={false} />
       <HeaderContent />
-      <PrivacyForm />
+      <PrivacyForm ReCAPTCHA={ReCAPTCHA} />
       <Footer />
     </SSRProvider>
   );

@@ -49,5 +49,14 @@
   "poweredBy": "Aangedreven door",
   "contactUsAt": "Contacteer ons op",
   "agreeTermsLabel": "Bevestig uw begrip van het bovenstaande voordat u uw verzoek indient",
-  "pleaseWait": "even geduld aub..."
+  "pleaseWait": "even geduld aub...",
+  "viewPrivacyNotice": "Privacyverklaring bekijken",
+  "viewPrivacyRequestForm": "Bekijk het privacyverzoekformulier",
+  "language": "Taal",
+  "language": "Language",
+  "formSuccess": "Formulier succesvol verzonden",
+  "formErr": "Formulier verzenden mislukt",
+  "emailPhoneInvalid": "Voer e-mailadres of telefoonnummer in",
+  "invalidName": "Nummers niet toegestaan. Voer een geldige naam in"
+
 }

@@ -9,16 +9,13 @@ import { ILanguageProviderProps } from "./languageProvider.types";
 
 export const LanguageContext = createContext<any>({});
 export const LanguageProvider = (props: ILanguageProviderProps) => {
-  const [language, setLanguage] = useState(languages.english);
-
   const { i18n } = useTranslation();
-
-  const [localString, setLocalString] = useState<any>(
-    i18n.getResourceBundle(language, "translations")
-  );
+  const [language, setLanguage] = useState(languages.english);
+  const [localString, setLocalString] = useState<any>({});
 
   useEffect(() => {
-    setLocalString(i18n.getResourceBundle(language, "translations"));
+    language &&
+      setLocalString(i18n.getResourceBundle(language, "translations"));
   }, [i18n, language]);
 
   return (

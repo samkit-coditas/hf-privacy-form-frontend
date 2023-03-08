@@ -49,10 +49,7 @@ const Footer = () => {
         </div>
       </Row>
       <Row className={styles.contactWrapper}>
-        <div>
-          {localString?.["contactUsAt"]}{" "}
-          <b>dpo@hydrafacial.com</b>
-        </div>
+        <div>{localString?.["contactUsAt"]} dpo@hydrafacial.com</div>
       </Row>
       <Row>
         <div className={styles.privacyWrapper}>
