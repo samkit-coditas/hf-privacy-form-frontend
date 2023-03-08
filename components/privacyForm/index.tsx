@@ -188,6 +188,34 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
     },
   ];
 
+  const requestBtnsForCountry = [
+    {
+      id: 1,
+      name: "accessRequest",
+      active: false,
+    },
+    {
+      id: 2,
+      name: "infoRequest",
+      active: false,
+    },
+    {
+      id: 3,
+      name: "updateRequest",
+      active: false,
+    },
+    {
+      id: 4,
+      name: "deletionRequest",
+      active: false,
+    },
+    {
+      id: 5,
+      name: "marketingUnsubscribe",
+      active: false,
+    },
+  ]
+
   const onCaptchaChange = () => {
     const token = captchaRef.current?.getValue();
     if (token) setCaptchaToken(token as string);
@@ -209,16 +237,28 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
     } else if (userType === "employee") {
       setEmpDetails(true);
       // setCloud(false);
-      setRequestTypes(requestBtns.slice(0, 5));
+      if(formData.country === "Japan"){
+        setRequestTypes(requestBtnsForCountry.slice(0, 4))
+      } else {
+        setRequestTypes(requestBtns.slice(0, 5));
+      }
     } else if (userType === "provider") {
       setEmpDetails(false);
       // setCloud(false);
-      setRequestTypes(requestBtns);
+      if(formData.country === "Japan"){
+        setRequestTypes(requestBtnsForCountry)
+      } else {
+        setRequestTypes(requestBtns);
+      }
       setJobApplicantFieldStatus(true);
     } else {
       // setCloud(false);
       setEmpDetails(false);
-      setRequestTypes(requestBtns);
+      if(formData.country === "Japan"){
+        setRequestTypes(requestBtnsForCountry)
+      } else {
+        setRequestTypes(requestBtns);
+      }
       setJobApplicantFieldStatus(false);
     }
     setUserTypes(userBtns);
@@ -234,23 +274,45 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
       formData.userType === "employee" ||
       formData.userType === "jobApplicant"
     ) {
-      requestBtns.slice(0, 5).forEach((element) => {
-        if (element.name === requestType) {
-          element.active = true;
-        } else {
-          element.active = false;
-        }
-      });
-      setRequestTypes(requestBtns.slice(0, 5));
+      if(formData.country === "Japan"){
+        requestBtnsForCountry.slice(0, 4).forEach((element) => {
+          if (element.name === requestType) {
+            element.active = true;
+          } else {
+            element.active = false;
+          }
+        });
+        setRequestTypes(requestBtnsForCountry.slice(0, 4));
+      } else {
+        requestBtns.slice(0, 5).forEach((element) => {
+          if (element.name === requestType) {
+            element.active = true;
+          } else {
+            element.active = false;
+          }
+        });
+        setRequestTypes(requestBtns.slice(0, 5));
+      }
     } else {
-      requestBtns.forEach((element, index) => {
-        if (element.name === requestType) {
-          element.active = true;
-        } else {
-          element.active = false;
-        }
-      });
-      setRequestTypes(requestBtns);
+      if(formData.country === "Japan"){
+        requestBtnsForCountry.forEach((element) => {
+          if (element.name === requestType) {
+            element.active = true;
+          } else {
+            element.active = false;
+          }
+        });
+        setRequestTypes(requestBtnsForCountry);
+      } else {
+        requestBtns.forEach((element, index) => {
+          if (element.name === requestType) {
+            element.active = true;
+          } else {
+            element.active = false;
+          }
+        });
+        setRequestTypes(requestBtns);
+      }
     }
     setFormData({
       ...formData,
@@ -365,6 +427,28 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
     }
   }, [formData]);
 
+  const handleCountry = (e: any) => {
+    console.log(e.target.value)
+    setFormData({ ...formData, country: e.target.value })
+    if(e.target.value === "Japan"){
+      if (
+        formData.userType === "employee" ||
+        formData.userType === "jobApplicant"
+      ) { setRequestTypes(requestBtnsForCountry.slice(0, 4)); }
+      else {
+        setRequestTypes(requestBtnsForCountry);
+      }
+    } else {
+      if (
+        formData.userType === "employee" ||
+        formData.userType === "jobApplicant"
+      ) { setRequestTypes(requestBtns.slice(0, 5)); }
+      else {
+        setRequestTypes(requestBtns);
+      }
+    }
+  }
+
   return (
     <Container className={styles.containerWrapper}>
       <ToastContainer />
@@ -439,9 +523,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
                 options={countryOptions}
                 fieldName={"country"}
                 required={localString?.["requiredFieldError"]}
-                onChange={(e: any) =>
-                  setFormData({ ...formData, country: e.target.value })
-                }
+                onChange={(e: any) => handleCountry(e)}
                 registerProps={register}
               />
               {errors.country ? (
