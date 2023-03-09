@@ -217,10 +217,14 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
     },
   ]
 
-  const onCaptchaChange = () => {
-    setCaptchaErr(false)
-    const token = captchaRef.current?.getValue();
-    setCaptchaToken("token");
+  const onCaptchaChange = (val) => {
+    if(val){
+      setCaptchaErr(false)
+      setCaptchaToken(val);
+    } else {
+      setCaptchaErr(true)
+      setCaptchaToken("")
+    }
   };
 
   const handleUserType = (userType: string) => {
@@ -333,16 +337,16 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
       updateDataLoading(false);
     } else if(formData.userType === ""){
       setUserTypeErr(true);
-      setCaptchaErr(false);
-      setRequestTypeErr(false);
+      // setCaptchaErr(false);
+      // setRequestTypeErr(false);
     } else if(formData.requestType === ""){
       setRequestTypeErr(true)
-      setUserTypeErr(false);
-      setCaptchaErr(false);
+      // setUserTypeErr(false);
+      // setCaptchaErr(false);
     } else if(captchaToken === ""){
       setCaptchaErr(true)
-      setRequestTypeErr(false)
-      setUserTypeErr(false);
+      // setRequestTypeErr(false)
+      // setUserTypeErr(false);
     } else {
       setUserTypeErr(false);
       setCaptchaErr(false);
@@ -809,7 +813,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
                 <ReCAPTCHA
                   ref={captchaRef}
                   sitekey={process.env.NEXT_PUBLIC_REACT_APP_SITE_KEY || ""}
-                  onChange={onCaptchaChange}
+                  onChange={(e) => onCaptchaChange(e)}
                   size="normal"
                   hl={language}
                 />
