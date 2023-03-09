@@ -377,10 +377,8 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
         updateDataLoading(false);
         if (response) {
           notifySuccess();
-          setCaptchaToken("")
         } else {
           notifyFailure();
-          setCaptchaToken("")
         }
       }
     }
