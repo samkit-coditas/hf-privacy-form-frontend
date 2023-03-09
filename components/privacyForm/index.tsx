@@ -330,6 +330,29 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
     const response = await getUserDetails();
   };
 
+  const resetFormDetails = () => {
+    setFormData({
+      ...formData,
+      entityName: "Hydrafacial",
+      firstName: "",
+      lastName: "",
+      userType: "",
+      // cloudType: "",
+      country: "",
+      requestType: "",
+      email: "",
+      phone: "",
+      requestDetails: "",
+      termsAggred: false,
+      locale: "en",
+      attachment: [],
+    })
+    setUserTypes(userBtns)
+    setRequestTypes(requestBtns)
+    setCaptchaToken("")
+    grecaptcha.reset()
+  }
+
 
   const onSubmit = async (data: any) => {
     if (!formData.email && !formData.phone) {
@@ -381,6 +404,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
         updateDataLoading(false);
         if (response) {
           notifySuccess();
+          resetFormDetails();
         } else {
           notifyFailure();
         }
@@ -551,6 +575,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
                 required={localString?.["requiredFieldError"]}
                 onChange={(e: any) => handleCountry(e)}
                 registerProps={register}
+                val={formData.country}
               />
               {errors.country ? (
                 <>
@@ -591,6 +616,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
                 className={styles.inputField}
                 type="text"
                 placeholder=""
+                value={formData.firstName}
                 {...register("firstName", {
                   required: localString?.["requiredFieldError"],
                   onChange: (e: any) =>
@@ -621,6 +647,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
                 className={styles.inputField}
                 type="text"
                 placeholder=""
+                value={formData.lastName}
                 {...register("lastName", {
                   required: localString?.["requiredFieldError"],
                   onChange: (e: any) =>
@@ -650,6 +677,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
                 className={styles.inputField}
                 type="email"
                 placeholder=""
+                value={formData.email}
                 {...register("email", {
                   required: false,
                   onChange: (e: any) =>
@@ -676,6 +704,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
                 className={styles.inputField}
                 type="text"
                 placeholder=""
+                value={formData.phone}
                 {...register("phone", {
                   required: false,
                   onChange: (e: any) =>
@@ -755,6 +784,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
               />
               <textarea
                 className={styles.textInputField}
+                value={formData.requestDetails}
                 {...register("requestDetails", {
                   required: localString?.["requiredFieldError"],
                   onChange: (e: any) =>
@@ -788,6 +818,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
                 id={`default-checkbox`}
                 label={localString?.["agreeTerms"]}
                 className={styles.agreeTerms}
+                checked={formData.termsAggred}
                 {...register("termsAggred", {
                   required: localString?.["requiredFieldError"],
                   onChange: (e: any) => {
