@@ -159,6 +159,16 @@
   margin-top: 1rem;
 }
 
+.captchaErrMsg {
+  display: flex;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: red;
+  height: 0.2rem;
+  margin-top: 0.25rem;
+  padding-left: 0px !important;
+}
+
 .submitBtnWrapper {
   display: flex;
   justify-content: center;

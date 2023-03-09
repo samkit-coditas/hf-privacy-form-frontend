@@ -116,6 +116,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
   const captchaRef = useRef<ReCAPTCHA>(null);
   const [reload, setReload] = useState(false);
   const router = useRouter();
+  const [captchaErr, setCaptchaErr] = useState(false);
 
   const userBtns = [
     // {
@@ -217,8 +218,9 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
   ]
 
   const onCaptchaChange = () => {
+    setCaptchaErr(false)
     const token = captchaRef.current?.getValue();
-    if (token) setCaptchaToken(token as string);
+    setCaptchaToken("token");
   };
 
   const handleUserType = (userType: string) => {
@@ -324,22 +326,29 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
     const response = await getUserDetails();
   };
 
+
   const onSubmit = async (data: any) => {
     if (!formData.email && !formData.phone) {
       emailPhoneFieldFailure();
       updateDataLoading(false);
+    } else if(formData.userType === ""){
+      setUserTypeErr(true);
+      setCaptchaErr(false);
+      setRequestTypeErr(false);
+    } else if(formData.requestType === ""){
+      setRequestTypeErr(true)
+      setUserTypeErr(false);
+      setCaptchaErr(false);
+    } else if(captchaToken === ""){
+      setCaptchaErr(true)
+      setRequestTypeErr(false)
+      setUserTypeErr(false);
     } else {
+      setUserTypeErr(false);
+      setCaptchaErr(false);
+      setRequestTypeErr(false);
       updateDataLoading(true);
-      if (formData.userType === "") {
-        setUserTypeErr(true);
-      } else {
-        setUserTypeErr(false);
-      }
-      if (formData.requestType === "") {
-        setRequestTypeErr(true);
-      } else {
-        setRequestTypeErr(false);
-      }
+
       let userFileData = new FormData();
 
       let details = {
@@ -368,8 +377,10 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
         updateDataLoading(false);
         if (response) {
           notifySuccess();
+          setCaptchaToken("")
         } else {
           notifyFailure();
+          setCaptchaToken("")
         }
       }
     }
@@ -391,6 +402,14 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
     updateDataLoading(false);
   };
 
+  const handleCaptchaScroll = () => {
+    const element = document.getElementById("captchaDiv");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+    updateDataLoading(false);
+  }
+
   useEffect(() => {
     if (requestTypeErr) {
       handleRequestClickScroll();
@@ -402,6 +421,12 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
       handleUserClickScroll();
     }
   }, [userTypeErr]);
+
+  useEffect(() => {
+    if(captchaErr){
+      handleCaptchaScroll();
+    }
+  },[captchaErr])
 
   useEffect(() => {
     setUserTypes(userBtns);
@@ -781,8 +806,8 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
                 </>
               ) : null}
             </Row>
-            <Row>
-              <div className={styles.recaptchaWrapper}>
+            <Row id="captchaDiv">
+              <div className={styles.recaptchaWrapper} >
                 <ReCAPTCHA
                   ref={captchaRef}
                   sitekey={process.env.NEXT_PUBLIC_REACT_APP_SITE_KEY || ""}
@@ -791,6 +816,9 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
                   hl={language}
                 />
               </div>
+              {captchaErr && (
+                <p className={styles.captchaErrMsg}>{localString?.["requiredFieldError"]}</p>
+              )}
             </Row>
             <Row className={styles.rowWrapper}>
               <Col>
