@@ -15,6 +15,7 @@ const FormSelect = ({
     <>
       <select
         options={options}
+        style={{border: "0.05rem solid rgba(0, 0, 0, 1)"}}
         className={styles.selectWrapper}
         {...formControl(`${fieldName}`, {
           required: required,
