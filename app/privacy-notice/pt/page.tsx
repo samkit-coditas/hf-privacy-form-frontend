@@ -134,6 +134,10 @@ const PrivacyPolicyPage = () => {
                 We encourage you to read our full Privacy Notice and the &nbsp;
                 <Link
                   href={`files/cookies_policy.docx`}
+                  style={{
+                    color: "#0d6efd",
+                    textDecoration: "underline"
+                  }}
                 >
                   Cookie Policy
                 </Link>&nbsp;
@@ -303,6 +307,10 @@ const PrivacyPolicyPage = () => {
                 similar devices that may be installed on the terminals of our
                 customers and users, we recommend you consult our &nbsp;<Link
                   href={`files/cookies_policy.docx`}
+                  style={{
+                    color: "#0d6efd",
+                    textDecoration: "underline"
+                  }}
                 >
                   Cookie Policy
                 </Link>.
@@ -500,6 +508,10 @@ const PrivacyPolicyPage = () => {
                 place to make sure that any such request is assessed according
                 to the procedure outlined in our &nbsp;<Link
                   href={`files/transparency_report.docx`}
+                  style={{
+                    color: "#0d6efd",
+                    textDecoration: "underline"
+                  }}
                 >
                   Transparency Report
                 </Link>.
@@ -558,6 +570,10 @@ const PrivacyPolicyPage = () => {
                     <li className={styles["sectionDescription"]}>
                       The EC’s &nbsp;<Link
                         href={`files/standard_contratual_clauses.docx`}
+                        style={{
+                          color: "#0d6efd",
+                          textDecoration: "underline"
+                        }}
                       >
                         Standard Contractual Clauses
                       </Link> &nbsp; (“SCCs”) and the UK
