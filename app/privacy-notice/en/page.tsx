@@ -7,6 +7,7 @@ import { LanguageContext } from "../../../hoc/languageProvider";
 import LanguageSelector from "../../../components/languageSelector";
 import { languagesMapping } from "@/constants/constants";
 import { Container, Row, Col } from "react-bootstrap";
+import Link from "next/link";
 
 const PrivacyPolicyPage = () => {
   const { language, setLanguage } = useContext(LanguageContext);
@@ -130,8 +131,13 @@ const PrivacyPolicyPage = () => {
                 </li>
               </ol>
               <p>
-                We encourage you to read our full Privacy Notice and the Cookie
-                Policy linked below to understand in depth the way we will use
+                We encourage you to read our full Privacy Notice and the &nbsp;
+                <Link
+                  href={`files/cookies_policy.docx`}
+                >
+                  Cookie Policy
+                </Link>&nbsp;
+                linked below to understand in depth the way we will use
                 your Personal Information and your rights over your data.
               </p>
             </div>
@@ -295,7 +301,11 @@ const PrivacyPolicyPage = () => {
               <p>
                 If you would like information about how we use cookies and
                 similar devices that may be installed on the terminals of our
-                customers and users, we recommend you consult our Cookie Policy.
+                customers and users, we recommend you consult our &nbsp;<Link
+                  href={`files/cookies_policy.docx`}
+                >
+                  Cookie Policy
+                </Link>.
               </p>
             </div>
             <div className={styles["contentContainer"]}>
@@ -488,7 +498,11 @@ const PrivacyPolicyPage = () => {
                 Authorities access to your Personal Information. In the event of
                 a request from the Authority, we have procedures and controls in
                 place to make sure that any such request is assessed according
-                to the procedure outlined in our Transparency Report.
+                to the procedure outlined in our &nbsp;<Link
+                  href={`files/transparency_report.docx`}
+                >
+                  Transparency Report
+                </Link>.
               </p>
             </div>
             <div className={styles["contentContainer"]}>
@@ -542,7 +556,11 @@ const PrivacyPolicyPage = () => {
                       ; or
                     </li>
                     <li className={styles["sectionDescription"]}>
-                      The EC’s Standard Contractual Clauses (“SCCs”) and the UK
+                      The EC’s &nbsp;<Link
+                        href={`files/standard_contratual_clauses.docx`}
+                      >
+                        Standard Contractual Clauses
+                      </Link> &nbsp; (“SCCs”) and the UK
                       Information Commissioner’s Office’s International Data
                       Transfer Addendum (“IDTA”), as applicable, supplemented by
                       additional security measures as recommended by the

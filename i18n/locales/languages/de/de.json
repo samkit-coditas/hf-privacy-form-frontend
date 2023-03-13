@@ -57,6 +57,25 @@
   "formSuccess": "Formulier succesvol verzonden",
   "formErr": "Formulier verzenden mislukt",
   "emailPhoneInvalid": "Voer e-mailadres of telefoonnummer in",
-  "invalidName": "Nummers niet toegestaan. Voer een geldige naam in"
-
+  "invalidName": "Nummers niet toegestaan. Voer een geldige naam in",
+  "australia": "Australië",
+  "canada": "Canada",
+  "china": "China",
+  "france": "Frankrijk",
+  "germany": "Duitsland",
+  "hongkong": "Hongkong",
+  "india": "India",
+  "ireland": "Ierland",
+  "japan": "Japan",
+  "newzealand": "Nieuw-Zeeland",
+  "portugal": "Portugal",
+  "singapore": "Singapore",
+  "spain": "Spanje",
+  "unitedkingdom": "Verenigd Koninkrijk",
+  "unitedstates": "Verenigde Staten",
+  "other": "Mijn land staat niet in de lijst",
+  "cookiePolicy": "Cookiebeleid",
+  "dataProcessingAggr": "Gegevensverwerkingsaggrement",
+  "standardContractualClauses": "Standaard contractbepalingen",
+  "transparencyReport": "Transparantierapport"
 }

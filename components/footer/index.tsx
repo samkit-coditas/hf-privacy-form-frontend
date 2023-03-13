@@ -58,8 +58,37 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="policyLink"
+            style={{marginRight: "0.4rem", fontSize: "0.65rem"}}
           >
             {localString?.["privacyPolicyLink"]}
+          </Link>
+          <Link
+            href={`files/cookies_policy.docx`}
+            className="policyLink"
+            style={{marginRight: "0.4rem", fontSize: "0.65rem"}}
+          >
+            {localString?.["cookiePolicy"]}
+          </Link>
+          <Link
+            href={`files/data_processing_agreement.docx`}
+            className="policyLink"
+            style={{marginRight: "0.4rem", fontSize: "0.65rem"}}
+          >
+            {localString?.["dataProcessingAggr"]}
+          </Link>
+          <Link
+            href={`files/standard_contratual_clauses.docx`}
+            className="policyLink"
+            style={{marginRight: "0.4rem", fontSize: "0.65rem"}}
+          >
+            {localString?.["standardContractualClauses"]}
+          </Link>
+          <Link
+            href={`files/transparency_report.docx`}
+            className="policyLink"
+            style={{marginRight: "0.4rem", fontSize: "0.65rem"}}
+          >
+            {localString?.["transparencyReport"]}
           </Link>
         </div>
       </Row>

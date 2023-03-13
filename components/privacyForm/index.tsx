@@ -24,7 +24,6 @@ import { ToastContainer, toast } from "react-toastify";
 import {
   cloudTypeOptions,
   entityTypeOptions,
-  countryOptions,
 } from "constants/constants";
 import FormButtonInput from "../../sharedComponents/formButtonInput/formButtonInput";
 import FormLabels from "../../sharedComponents/formLabels/formLabels";
@@ -117,6 +116,90 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
   const [reload, setReload] = useState(false);
   const router = useRouter();
   const [captchaErr, setCaptchaErr] = useState(false);
+
+  const countryOptions = [
+    {
+      id: 1,
+      name: localString['australia'],
+      value: "Australia",
+    },
+    {
+      id: 10,
+      name: localString['canada'],
+      value: "Canada",
+    },
+    {
+      id: 3,
+      name: localString['china'],
+      value: "China",
+    },
+    {
+      id: 12,
+      name: localString['france'],
+      value: "France",
+    },
+    {
+      id: 15,
+      name: localString['germany'],
+      value: "Germany",
+    },
+    {
+      id: 5,
+      name: localString['hongkong'],
+      value: "Hong Kong",
+    },
+    {
+      id: 7,
+      name: localString['india'],
+      value: "India",
+    },
+
+    {
+      id: 11,
+      name: localString['ireland'],
+      value: "Ireland",
+    },
+    {
+      id: 4,
+      name: localString['japan'],
+      value: "Japan",
+    },
+    {
+      id: 2,
+      name: localString['newzealand'],
+      value: "New Zealand",
+    },
+    {
+      id: 14,
+      name: localString['portugal'],
+      value: "Portugal",
+    },
+    {
+      id: 6,
+      name: localString['singapore'],
+      value: "Singapore",
+    },
+    {
+      id: 13,
+      name: localString['spain'],
+      value: "Spain",
+    },
+    {
+      id: 8,
+      name: localString['unitedkingdom'],
+      value: "United Kingdom",
+    },
+    {
+      id: 9,
+      name: localString['unitedstates'],
+      value: "United States",
+    },
+    {
+      id: 10,
+      name: localString['other'],
+      value: "My Country is not Listed"
+    }
+  ];
 
   const userBtns = [
     // {
