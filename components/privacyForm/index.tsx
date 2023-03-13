@@ -120,83 +120,82 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
   const countryOptions = [
     {
       id: 1,
-      name: localString['australia'],
+      name: localString?.['australia'],
       value: "Australia",
     },
     {
       id: 10,
-      name: localString['canada'],
+      name: localString?.['canada'],
       value: "Canada",
     },
     {
       id: 3,
-      name: localString['china'],
+      name: localString?.['china'],
       value: "China",
     },
     {
       id: 12,
-      name: localString['france'],
+      name: localString?.['france'],
       value: "France",
     },
     {
       id: 15,
-      name: localString['germany'],
+      name: localString?.['germany'],
       value: "Germany",
     },
     {
       id: 5,
-      name: localString['hongkong'],
+      name: localString?.['hongkong'],
       value: "Hong Kong",
     },
     {
       id: 7,
-      name: localString['india'],
+      name: localString?.['india'],
       value: "India",
     },
-
     {
       id: 11,
-      name: localString['ireland'],
+      name: localString?.['ireland'],
       value: "Ireland",
     },
     {
       id: 4,
-      name: localString['japan'],
+      name: localString?.['japan'],
       value: "Japan",
     },
     {
       id: 2,
-      name: localString['newzealand'],
+      name: localString?.['newzealand'],
       value: "New Zealand",
     },
     {
       id: 14,
-      name: localString['portugal'],
+      name: localString?.['portugal'],
       value: "Portugal",
     },
     {
       id: 6,
-      name: localString['singapore'],
+      name: localString?.['singapore'],
       value: "Singapore",
     },
     {
       id: 13,
-      name: localString['spain'],
+      name: localString?.['spain'],
       value: "Spain",
     },
     {
       id: 8,
-      name: localString['unitedkingdom'],
+      name: localString?.['unitedkingdom'],
       value: "United Kingdom",
     },
     {
       id: 9,
-      name: localString['unitedstates'],
+      name: localString?.['unitedstates'],
       value: "United States",
     },
     {
       id: 16,
-      name: localString['other'],
+      name: localString?.['other'],
       value: "My Country is not Listed"
     }
   ];
