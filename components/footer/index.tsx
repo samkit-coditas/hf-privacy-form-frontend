@@ -55,8 +55,6 @@ const Footer = () => {
         <div className={styles.privacyWrapper}>
           <Link
             href={`/privacy-notice/${language}`}
-            target="_blank"
-            rel="noopener noreferrer"
             className="policyLink"
             style={{marginRight: "0.4rem", fontSize: "0.65rem"}}
           >
