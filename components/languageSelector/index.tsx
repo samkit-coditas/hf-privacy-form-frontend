@@ -6,7 +6,7 @@ import styles from "./languageSelector.module.scss";
 import { languagesMapping } from "../../constants/constants";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
-import ROUTES from "@/constants/routes";
+import ROUTES from "../../constants/routes";
 
 const LanguageSelector = ({ privacyPage, styleProps }) => {
   const { language, setLanguage } = useContext(LanguageContext);
@@ -52,6 +52,7 @@ const LanguageSelector = ({ privacyPage, styleProps }) => {
             }/${language}`}
             rel="noopener noreferrer"
             className="policyLink"
+            data-testid="policyLink"
           >
             {isCurrentMatchingRoute
               ? localString?.["viewPrivacyRequestForm"]
@@ -60,7 +61,9 @@ const LanguageSelector = ({ privacyPage, styleProps }) => {
         </Col>
         <Col className={styles.languageWrapper} lg={6}>
           <Fragment>
-            <span className={styles.title}>{localString?.["language"]} : </span>
+            <span data-testid="language" className={styles.title}>
+              {localString?.["language"]} :{" "}
+            </span>
             <Dropdown
               className={styles.languageDropdown}
               onSelect={(e) => handleChange(e)}

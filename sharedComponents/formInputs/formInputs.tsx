@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./formInputs.module.scss";
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
 import { IFormInputsProps } from "./formInputs.types";
 
 const FormInputs = ({
@@ -12,12 +12,12 @@ const FormInputs = ({
   maxLength,
   pattern,
 }) => {
-
   const { register } = useForm();
 
   return (
     <>
       <input
+        data-testid="formInput"
         className={styles.inputField}
         type={type}
         placeholder={placeholder}
@@ -30,7 +30,7 @@ const FormInputs = ({
         })}
       />
     </>
-  )
+  );
 };
 
 export default FormInputs;

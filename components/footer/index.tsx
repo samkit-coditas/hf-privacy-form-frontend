@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import styles from "./footer.module.scss";
 import Image from "next/image";
 import Link from "next/link";
-import { LanguageContext } from "@/hoc/languageProvider";
+import { LanguageContext } from "../../hoc/languageProvider";
 import BrandingLogo from "@/public/Hydrafacial_Pos_Trademark.svg";
 
 const Footer = () => {
@@ -19,16 +19,17 @@ const Footer = () => {
             alt="Picture of the author"
             width={150}
             height={100}
+            data-testid="brandingLogo"
           />
         </div>
       </Row>
       <Row className={styles.contentWrapper}>
-        <div className={styles.footerTextWrapper}>
+        <div className={styles.footerTextWrapper} data-testid="footerTitle">
           {localString?.["footerTitle"]}
         </div>
       </Row>
       <Row className={styles.contentWrapper}>
-        <div className={styles.footerAddress}>
+        <div className={styles.footerAddress} data-testid="footerAddress">
           <span className={styles.addressTitle}>Hydrafacial LLC</span> - 2165 E.
           Spring Street, Long Beach, CA 90806 <br />
           <span className={styles.addressTitle}>Hydrafacial UK Limited</span> -
@@ -49,42 +50,44 @@ const Footer = () => {
         </div>
       </Row>
       <Row className={styles.contactWrapper}>
-        <div>{localString?.["contactUsAt"]} dpo@hydrafacial.com</div>
+        <div data-testid="contactUs">
+          {localString?.["contactUsAt"]} dpo@hydrafacial.com
+        </div>
       </Row>
       <Row>
-        <div className={styles.privacyWrapper}>
+        <div className={styles.privacyWrapper} data-testid="footerLinks">
           <Link
             href={`/privacy-notice/${language}`}
             className="policyLink"
-            style={{marginRight: "0.4rem", fontSize: "0.65rem"}}
+            style={{ marginRight: "0.4rem", fontSize: "0.65rem" }}
           >
             {localString?.["privacyPolicyLink"]}
           </Link>
           <Link
             href={`files/cookies_policy.docx`}
             className="policyLink"
-            style={{marginRight: "0.4rem", fontSize: "0.65rem"}}
+            style={{ marginRight: "0.4rem", fontSize: "0.65rem" }}
           >
             {localString?.["cookiePolicy"]}
           </Link>
           <Link
             href={`files/data_processing_agreement.docx`}
             className="policyLink"
-            style={{marginRight: "0.4rem", fontSize: "0.65rem"}}
+            style={{ marginRight: "0.4rem", fontSize: "0.65rem" }}
           >
             {localString?.["dataProcessingAggr"]}
           </Link>
           <Link
             href={`files/standard_contratual_clauses.docx`}
             className="policyLink"
-            style={{marginRight: "0.4rem", fontSize: "0.65rem"}}
+            style={{ marginRight: "0.4rem", fontSize: "0.65rem" }}
           >
             {localString?.["standardContractualClauses"]}
           </Link>
           <Link
             href={`files/transparency_report.docx`}
             className="policyLink"
-            style={{marginRight: "0.4rem", fontSize: "0.65rem"}}
+            style={{ marginRight: "0.4rem", fontSize: "0.65rem" }}
           >
             {localString?.["transparencyReport"]}
           </Link>

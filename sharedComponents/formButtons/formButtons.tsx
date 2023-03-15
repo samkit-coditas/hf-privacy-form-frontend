@@ -1,6 +1,6 @@
 import react from "react";
 import styles from "./formButtons.module.scss";
-import { IFormButtonsProps } from "./formButtons.type";
+import { IFormButtonsProps } from "./formButtons.types";
 import { Button } from "react-bootstrap";
 
 const FormButtons = ({
@@ -8,17 +8,18 @@ const FormButtons = ({
   handleClick,
   button,
   buttonName,
-} : IFormButtonsProps ) => {
-  return(
+}: IFormButtonsProps) => {
+  return (
     <>
       <Button
-        className={button.active ? styles.userTypeBtn : styles.userInActiveBtn}
+        className={button?.active ? styles.userTypeBtn : styles.userInActiveBtn}
         onClick={handleClick}
+        data-testid="button"
       >
         {buttonName}
       </Button>
     </>
-  )
+  );
 };
 
 export default FormButtons;

@@ -20,6 +20,7 @@ const Home = ({ lang }: any) => {
         <Row className={styles.contentWrapper}>
           <Col>
             <Image
+              data-testid="brandLogo"
               src={BrandingLogo}
               alt="Picture of the author"
               width={220}

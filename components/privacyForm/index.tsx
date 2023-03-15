@@ -21,10 +21,7 @@ import {
   uploadFile,
 } from "../../services/user.service";
 import { ToastContainer, toast } from "react-toastify";
-import {
-  cloudTypeOptions,
-  entityTypeOptions,
-} from "constants/constants";
+import { cloudTypeOptions, entityTypeOptions } from "constants/constants";
 import FormButtonInput from "../../sharedComponents/formButtonInput/formButtonInput";
 import FormLabels from "../../sharedComponents/formLabels/formLabels";
 import FormInputs from "../../sharedComponents/formInputs/formInputs";
@@ -120,84 +117,84 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
   const countryOptions = [
     {
       id: 1,
-      name: localString?.['australia'],
+      name: localString?.["australia"],
       value: "Australia",
     },
     {
       id: 10,
-      name: localString?.['canada'],
+      name: localString?.["canada"],
       value: "Canada",
     },
     {
       id: 3,
-      name: localString?.['china'],
+      name: localString?.["china"],
       value: "China",
     },
     {
       id: 12,
-      name: localString?.['france'],
+      name: localString?.["france"],
       value: "France",
     },
     {
       id: 15,
-      name: localString?.['germany'],
+      name: localString?.["germany"],
       value: "Germany",
     },
     {
       id: 5,
-      name: localString?.['hongkong'],
+      name: localString?.["hongkong"],
       value: "Hong Kong",
     },
     {
       id: 7,
-      name: localString?.['india'],
+      name: localString?.["india"],
       value: "India",
     },
     {
       id: 11,
-      name: localString?.['ireland'],
+      name: localString?.["ireland"],
       value: "Ireland",
     },
     {
       id: 4,
-      name: localString?.['japan'],
+      name: localString?.["japan"],
       value: "Japan",
     },
     {
       id: 2,
-      name: localString?.['newzealand'],
+      name: localString?.["newzealand"],
       value: "New Zealand",
     },
     {
       id: 14,
-      name: localString?.['portugal'],
+      name: localString?.["portugal"],
       value: "Portugal",
     },
     {
       id: 6,
-      name: localString?.['singapore'],
+      name: localString?.["singapore"],
       value: "Singapore",
     },
     {
       id: 13,
-      name: localString?.['spain'],
+      name: localString?.["spain"],
       value: "Spain",
     },
     {
       id: 8,
-      name: localString?.['unitedkingdom'],
+      name: localString?.["unitedkingdom"],
       value: "United Kingdom",
     },
     {
       id: 9,
-      name: localString?.['unitedstates'],
+      name: localString?.["unitedstates"],
       value: "United States",
     },
     {
       id: 16,
-      name: localString?.['other'],
-      value: "My Country is not Listed"
-    }
+      name: localString?.["other"],
+      value: "My Country is not Listed",
+    },
   ];
 
   const userBtns = [
@@ -297,15 +294,15 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
       name: "marketingUnsubscribe",
       active: false,
     },
-  ]
+  ];
 
   const onCaptchaChange = (val) => {
-    if(val){
-      setCaptchaErr(false)
+    if (val) {
+      setCaptchaErr(false);
       setCaptchaToken(val);
     } else {
-      setCaptchaErr(true)
-      setCaptchaToken("")
+      setCaptchaErr(true);
+      setCaptchaToken("");
     }
   };
 
@@ -325,16 +322,16 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
     } else if (userType === "employee") {
       setEmpDetails(true);
       // setCloud(false);
-      if(formData.country === "Japan"){
-        setRequestTypes(requestBtnsForCountry.slice(0, 4))
+      if (formData.country === "Japan") {
+        setRequestTypes(requestBtnsForCountry.slice(0, 4));
       } else {
         setRequestTypes(requestBtns.slice(0, 5));
       }
     } else if (userType === "provider") {
       setEmpDetails(false);
       // setCloud(false);
-      if(formData.country === "Japan"){
-        setRequestTypes(requestBtnsForCountry)
+      if (formData.country === "Japan") {
+        setRequestTypes(requestBtnsForCountry);
       } else {
         setRequestTypes(requestBtns);
       }
@@ -342,8 +339,8 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
     } else {
       // setCloud(false);
       setEmpDetails(false);
-      if(formData.country === "Japan"){
-        setRequestTypes(requestBtnsForCountry)
+      if (formData.country === "Japan") {
+        setRequestTypes(requestBtnsForCountry);
       } else {
         setRequestTypes(requestBtns);
       }
@@ -362,7 +359,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
       formData.userType === "employee" ||
       formData.userType === "jobApplicant"
     ) {
-      if(formData.country === "Japan"){
+      if (formData.country === "Japan") {
         requestBtnsForCountry.slice(0, 4).forEach((element) => {
           if (element.name === requestType) {
             element.active = true;
@@ -382,7 +379,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
         setRequestTypes(requestBtns.slice(0, 5));
       }
     } else {
-      if(formData.country === "Japan"){
+      if (formData.country === "Japan") {
         requestBtnsForCountry.forEach((element) => {
           if (element.name === requestType) {
             element.active = true;
@@ -428,28 +425,27 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
       termsAggred: false,
       locale: "en",
       attachment: [],
-    })
-    setUserTypes(userBtns)
-    setRequestTypes(requestBtns)
-    setCaptchaToken("")
-    grecaptcha.reset()
-  }
-
+    });
+    setUserTypes(userBtns);
+    setRequestTypes(requestBtns);
+    setCaptchaToken("");
+    grecaptcha.reset();
+  };
 
   const onSubmit = async (data: any) => {
     if (!formData.email && !formData.phone) {
       emailPhoneFieldFailure();
       updateDataLoading(false);
-    } else if(formData.userType === ""){
+    } else if (formData.userType === "") {
       setUserTypeErr(true);
       // setCaptchaErr(false);
       // setRequestTypeErr(false);
-    } else if(formData.requestType === ""){
-      setRequestTypeErr(true)
+    } else if (formData.requestType === "") {
+      setRequestTypeErr(true);
       // setUserTypeErr(false);
       // setCaptchaErr(false);
-    } else if(captchaToken === ""){
-      setCaptchaErr(true)
+    } else if (captchaToken === "") {
+      setCaptchaErr(true);
       // setRequestTypeErr(false)
       // setUserTypeErr(false);
     } else {
@@ -482,7 +478,10 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
       // userFileData.append(`files.attachment`, formData.attachment);
 
       if (formData.userType && formData.requestType) {
-        const response = await createNewUser(details, formData.attachment ? formData.attachment : []);
+        const response = await createNewUser(
+          details,
+          formData.attachment ? formData.attachment : []
+        );
         updateDataLoading(false);
         if (response) {
           notifySuccess();
@@ -516,7 +515,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
       element.scrollIntoView({ behavior: "smooth" });
     }
     updateDataLoading(false);
-  }
+  };
 
   useEffect(() => {
     if (requestTypeErr) {
@@ -531,10 +530,10 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
   }, [userTypeErr]);
 
   useEffect(() => {
-    if(captchaErr){
+    if (captchaErr) {
       handleCaptchaScroll();
     }
-  },[captchaErr])
+  }, [captchaErr]);
 
   useEffect(() => {
     setUserTypes(userBtns);
@@ -561,32 +560,34 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
   }, [formData]);
 
   const handleCountry = (e: any) => {
-    setFormData({ ...formData, country: e.target.value })
-    if(e.target.value === "Japan"){
+    setFormData({ ...formData, country: e.target.value });
+    if (e.target.value === "Japan") {
       if (
         formData.userType === "employee" ||
         formData.userType === "jobApplicant"
-      ) { setRequestTypes(requestBtnsForCountry.slice(0, 4)); }
-      else {
+      ) {
+        setRequestTypes(requestBtnsForCountry.slice(0, 4));
+      } else {
         setRequestTypes(requestBtnsForCountry);
       }
     } else {
       if (
         formData.userType === "employee" ||
         formData.userType === "jobApplicant"
-      ) { setRequestTypes(requestBtns.slice(0, 5)); }
-      else {
+      ) {
+        setRequestTypes(requestBtns.slice(0, 5));
+      } else {
         setRequestTypes(requestBtns);
       }
     }
-  }
+  };
 
   return (
     <Container className={styles.containerWrapper}>
       <ToastContainer />
       <Row>
         <Col>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit(onSubmit)} data-testid="form">
             {/* <Row className={styles.rowWrapper}>
             <FormLabels
               labelName={localString?.["chooseEntity"]}
@@ -614,6 +615,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
                   <FormLabels
                     labelName={localString?.["userType"]}
                     required={true}
+                    data-testid="userType"
                   />
                 </Row>
                 <Row>
@@ -623,7 +625,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
                     handleButtonChange={handleUserType}
                   />
                   {userTypeErr && (
-                    <p className={styles.errMsg}>
+                    <p className={styles.errMsg} data-testid="errMsg">
                       {localString?.["requiredFieldError"]}
                     </p>
                   )}
@@ -650,6 +652,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
               <FormLabels
                 labelName={localString?.["country"]}
                 required={true}
+                data-testid="country"
               />
               <FormSelect
                 options={countryOptions}
@@ -673,6 +676,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
                   <FormLabels
                     labelName={localString?.["requestType"]}
                     required={true}
+                    data-testid="requestType"
                   />
                 </Row>
                 <Row>
@@ -690,7 +694,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
               </Col>
             </Row>
             <Row className={styles.rowWrapper}>
-              <label className={styles.labelWrapper}>
+              <label className={styles.labelWrapper} data-testid="firstName">
                 {localString?.["firstName"]}
                 <span className={styles.requiredField}>*</span>
               </label>
@@ -706,7 +710,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
                   pattern: {
                     value: /^([^0-9]*)$/g,
                     message: localString?.["invalidName"],
-                  }
+                  },
                 })}
               />
               {errors.firstName ? (
@@ -721,7 +725,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
               ) : null}
             </Row>
             <Row className={styles.rowWrapper}>
-              <label className={styles.labelWrapper}>
+              <label className={styles.labelWrapper} data-testid="lastName">
                 {localString?.["lastName"]}
                 <span className={styles.requiredField}>*</span>
               </label>
@@ -737,7 +741,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
                   pattern: {
                     value: /^([^0-9]*)$/g,
                     message: localString?.["invalidName"],
-                  }
+                  },
                 })}
               />
               {errors.lastName ? (
@@ -752,7 +756,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
               ) : null}
             </Row>
             <Row className={styles.rowWrapper}>
-              <label className={styles.labelWrapper}>
+              <label className={styles.labelWrapper} data-testid="email">
                 {localString?.["email"]}
               </label>
               <input
@@ -765,7 +769,8 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
                   onChange: (e: any) =>
                     setFormData({ ...formData, email: e.target.value }),
                   pattern: {
-                    value: /^[a-zA-Z0-9]+(?:[._-][a-zA-Z0-9]+)*@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$/gm,
+                    value:
+                      /^[a-zA-Z0-9]+(?:[._-][a-zA-Z0-9]+)*@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$/gm,
                     message: localString?.["invalidEmail"],
                   },
                 })}
@@ -779,7 +784,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
               ) : null}
             </Row>
             <Row className={styles.rowWrapper}>
-              <label className={styles.labelWrapper}>
+              <label className={styles.labelWrapper} data-testid="phone">
                 {localString?.["phone"]}
               </label>
               <input
@@ -863,6 +868,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
               <FormLabels
                 labelName={localString?.["requestDetails"]}
                 required={true}
+                data-testid="requestDetails"
               />
               <textarea
                 className={styles.textInputField}
@@ -894,6 +900,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
               <FormLabels
                 labelName={localString?.["agreeTermsLabel"]}
                 required={false}
+                data-testid="agreeTermsLabel"
               />
               <Form.Check
                 type="checkbox"
@@ -922,7 +929,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
               ) : null}
             </Row>
             <Row id="captchaDiv">
-              <div className={styles.recaptchaWrapper} >
+              <div className={styles.recaptchaWrapper} data-testid="reCaptcha">
                 <ReCAPTCHA
                   ref={captchaRef}
                   sitekey={process.env.NEXT_PUBLIC_REACT_APP_SITE_KEY || ""}
@@ -932,7 +939,9 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
                 />
               </div>
               {captchaErr && (
-                <p className={styles.captchaErrMsg}>{localString?.["requiredFieldError"]}</p>
+                <p className={styles.captchaErrMsg}>
+                  {localString?.["requiredFieldError"]}
+                </p>
               )}
             </Row>
             <Row className={styles.rowWrapper}>
@@ -945,6 +954,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
                 className={`${styles.submitActiveBtn} ${styles.ripple}`}
                 type="submit"
                 disabled={isDataLoading}
+                data-testid="submitButton"
               >
                 {isDataLoading
                   ? localString?.["pleaseWait"]

@@ -11,8 +11,8 @@ const NoteContent = () => {
     <Container className={styles.containerWrapper}>
       <Row>
         <Col>
-          <h6>{localString?.["pleaseNote"]}</h6>
-          <p className={styles.contentLayout}>
+          <h6 data-testid="noteHeading">{localString?.["pleaseNote"]}</h6>
+          <p data-testid="noteDetails" className={styles.contentLayout}>
             {localString?.["noteDetailsOne"]}
             <br />
             <br />
@@ -25,6 +25,7 @@ const NoteContent = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="policyLink"
+              data-testid="privacyPolicyLink"
             >
               {localString?.["privacyPolicyLink"]}
             </Link>

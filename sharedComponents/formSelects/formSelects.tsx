@@ -16,7 +16,7 @@ const FormSelect = ({
     <>
       <select
         options={options}
-        style={{border: "0.05rem solid rgba(0, 0, 0, 1)"}}
+        style={{ border: "0.05rem solid rgba(0, 0, 0, 1)" }}
         className={styles.selectWrapper}
         value={val}
         {...formControl(`${fieldName}`, {
@@ -24,8 +24,9 @@ const FormSelect = ({
           onChange: onChange,
         })}
         id={useId()}
+        data-testid="select"
       >
-        <option disabled selected value="">
+        <option data-testid="option" disabled selected value="">
           {" "}
         </option>
         {options?.map((option: any) => (

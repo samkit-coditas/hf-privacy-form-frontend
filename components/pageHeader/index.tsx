@@ -13,6 +13,7 @@ const PageHeader = () => {
             alt="Picture of the author"
             width={200}
             height={60}
+            data-testid="brandingLogo"
           />
         </Col>
       </Row>
