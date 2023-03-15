@@ -13,6 +13,14 @@ import FormInputs from "../sharedComponents/formInputs/formInputs";
 import FormLabels from "../sharedComponents/formLabels/formLabels";
 import FormSelect from "../sharedComponents/formSelects/formSelects";
 import FormButtonInput from "../sharedComponents/formButtonInput/formButtonInput";
+import mockRouter from "next-router-mock";
+import Home from "../app/page";
+import LanguageSelector from "../components/languageSelector";
+import PrivacyForm from "../components/privacyForm";
+import dynamic from "next/dynamic";
+
+jest.mock("next/navigation", () => require("next-router-mock"));
+mockRouter.push("/");
 
 describe("Header", () => {
   it("Renders a Header", () => {
@@ -163,32 +171,61 @@ describe("Form Button Inputs", () => {
     expect(screen.getByTestId("formButtonsInput")).toBeInTheDocument();
   });
 });
-// describe("Footer", () => {
-//   it("Renders a Footer", () => {
-//     render(
-//       <LanguageProvider>
-//         <Footer />
-//       </LanguageProvider>
-//     );
-//     // check if all components are rendered
-//     expect(screen.getByTestId("brandLogo")).toBeInTheDocument();
-//     expect(screen.getByTestId("policyLink")).toBeInTheDocument();
-//     expect(screen.getByTestId("language")).toBeInTheDocument();
-//     expect(screen.getByTestId("contentTitle")).toBeInTheDocument();
-//     expect(screen.getByTestId("contentDescriptionOne")).toBeInTheDocument();
-//     expect(screen.getByTestId("contentDescriptionTwo")).toBeInTheDocument();
-//     expect(screen.getByTestId("contentFooter")).toBeInTheDocument();
-//     expect(screen.getByTestId("form")).toBeInTheDocument();
-//     expect(screen.getByTestId("userType")).toBeInTheDocument();
-//     expect(screen.getByTestId("requestType")).toBeInTheDocument();
-//     expect(screen.getByTestId("country")).toBeInTheDocument();
-//     expect(screen.getByTestId("firstName")).toBeInTheDocument();
-//     expect(screen.getByTestId("lastName")).toBeInTheDocument();
-//     expect(screen.getByTestId("email")).toBeInTheDocument();
-//     expect(screen.getByTestId("phone")).toBeInTheDocument();
-//     expect(screen.getByTestId("requestDetails")).toBeInTheDocument();
-//     expect(screen.getByTestId("agreeTermsLabel")).toBeInTheDocument();
-//     expect(screen.getByTestId("reCaptcha")).toBeInTheDocument();
-//     expect(screen.getByTestId("submitButton")).toBeInTheDocument();
-//   });
-// });
+
+describe("Language Selector", () => {
+  it("Renders a Language Selector Component", () => {
+    render(
+      <LanguageProvider>
+        <LanguageSelector privacyPage={undefined} styleProps={undefined} />
+      </LanguageProvider>
+    );
+    fireEvent.click(screen.getByTestId("defaultLang"));
+    expect(screen.getByTestId("policyLink")).toBeInTheDocument();
+    expect(screen.getByTestId("language")).toBeInTheDocument();
+    expect(screen.getByTestId("dropdown")).toBeInTheDocument();
+    expect(screen.getByTestId("dropdownContainer")).toBeInTheDocument();
+    expect(screen.getByTestId("defaultLang")).toBeInTheDocument();
+    expect(screen.getByTestId("english")).toBeInTheDocument();
+    expect(screen.getByTestId("french")).toBeInTheDocument();
+    expect(screen.getByTestId("dutch")).toBeInTheDocument();
+    expect(screen.getByTestId("spanish")).toBeInTheDocument();
+    expect(screen.getByTestId("japanese")).toBeInTheDocument();
+    expect(screen.getByTestId("portuguese")).toBeInTheDocument();
+    expect(screen.getByTestId("chinese")).toBeInTheDocument();
+  });
+});
+
+describe("Home", () => {
+  it("Renders all the Pages", () => {
+    render(
+      <LanguageProvider>
+        <Home />
+      </LanguageProvider>
+    );
+    expect(screen.getByTestId("brandLogo")).toBeInTheDocument();
+  });
+});
+
+describe("Privacy Form", () => {
+  const ReCAPTCHA = dynamic(() => import("react-google-recaptcha"));
+  it("Renders Privacy Form", () => {
+    render(
+      <LanguageProvider>
+        <PrivacyForm ReCAPTCHA={ReCAPTCHA} />
+      </LanguageProvider>
+    );
+    expect(screen.getByTestId("formContainer")).toBeInTheDocument();
+    expect(screen.getByTestId("form")).toBeInTheDocument();
+    expect(screen.getByTestId("userType")).toBeInTheDocument();
+    expect(screen.getByTestId("requestType")).toBeInTheDocument();
+    expect(screen.getByTestId("country")).toBeInTheDocument();
+    expect(screen.getByTestId("firstName")).toBeInTheDocument();
+    expect(screen.getByTestId("lastName")).toBeInTheDocument();
+    expect(screen.getByTestId("email")).toBeInTheDocument();
+    expect(screen.getByTestId("phone")).toBeInTheDocument();
+    expect(screen.getByTestId("requestDetails")).toBeInTheDocument();
+    expect(screen.getByTestId("agreeTermsLabel")).toBeInTheDocument();
+    expect(screen.getByTestId("reCaptcha")).toBeInTheDocument();
+    expect(screen.getByTestId("submitButton")).toBeInTheDocument();
+  });
+});

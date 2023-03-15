@@ -5,10 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { LanguageContext } from "../../hoc/languageProvider";
 import BrandingLogo from "@/public/Hydrafacial_Pos_Trademark.svg";
-
 const Footer = () => {
   const { localString, language } = useContext(LanguageContext);
-
   return (
     <Container fluid className={styles.containerWrapper}>
       <Row className={styles.contentWrapper}>

@@ -586,7 +586,7 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
     <Container className={styles.containerWrapper}>
       <ToastContainer />
       <Row>
-        <Col>
+        <Col data-testid="formContainer">
           <form onSubmit={handleSubmit(onSubmit)} data-testid="form">
             {/* <Row className={styles.rowWrapper}>
             <FormLabels
@@ -611,11 +611,10 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
           </Row> */}
             <Row className={styles.rowWrapper} id="userTypeDiv">
               <Col>
-                <Row>
+                <Row data-testid="userType">
                   <FormLabels
                     labelName={localString?.["userType"]}
                     required={true}
-                    data-testid="userType"
                   />
                 </Row>
                 <Row>
@@ -648,11 +647,10 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
                 />
               </Row>
             )} */}
-            <Row className={styles.rowWrapper}>
+            <Row className={styles.rowWrapper} data-testid="country">
               <FormLabels
                 labelName={localString?.["country"]}
                 required={true}
-                data-testid="country"
               />
               <FormSelect
                 options={countryOptions}
@@ -672,11 +670,10 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
             </Row>
             <Row className={styles.rowWrapper} id="requestTypeDiv">
               <Col>
-                <Row>
+                <Row data-testid="requestType">
                   <FormLabels
                     labelName={localString?.["requestType"]}
                     required={true}
-                    data-testid="requestType"
                   />
                 </Row>
                 <Row>
@@ -864,11 +861,10 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
                 </Row>
               </>
             )} */}
-            <Row className={styles.rowWrapper}>
+            <Row className={styles.rowWrapper} data-testid="requestDetails">
               <FormLabels
                 labelName={localString?.["requestDetails"]}
                 required={true}
-                data-testid="requestDetails"
               />
               <textarea
                 className={styles.textInputField}
@@ -896,11 +892,10 @@ const PrivacyForm = ({ ReCAPTCHA }: any) => {
             <Row>
               <NoteContent />
             </Row>
-            <Row className={styles.rowWrapper}>
+            <Row className={styles.rowWrapper} data-testid="agreeTermsLabel">
               <FormLabels
                 labelName={localString?.["agreeTermsLabel"]}
                 required={false}
-                data-testid="agreeTermsLabel"
               />
               <Form.Check
                 type="checkbox"

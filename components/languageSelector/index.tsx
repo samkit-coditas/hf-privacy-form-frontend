@@ -4,7 +4,7 @@ import { LanguageContext } from "../../hoc/languageProvider";
 import { Container, Row, Col, Dropdown } from "react-bootstrap";
 import styles from "./languageSelector.module.scss";
 import { languagesMapping } from "../../constants/constants";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import ROUTES from "../../constants/routes";
 
@@ -13,9 +13,14 @@ const LanguageSelector = ({ privacyPage, styleProps }) => {
   const { localString } = useContext(LanguageContext);
   const [defaultTranslateLang, setTranslateLang] = useState("English");
   const router = useRouter();
-  const pathName = usePathname();
+  const [pathName, setPathName] = useState(window.location.pathname);
+  // console.log("---", window.location.pathname)
   const [, currentRoute] = pathName?.split("/");
   const isCurrentMatchingRoute = `/${currentRoute}` === ROUTES.PRIVACY_NOTICE;
+
+  useEffect(() => {
+    setPathName(window.location.pathname);
+  }, [window.location.pathname]);
 
   const handleChange = (e: any) => {
     let lang = e.split(",");
@@ -67,34 +72,54 @@ const LanguageSelector = ({ privacyPage, styleProps }) => {
             <Dropdown
               className={styles.languageDropdown}
               onSelect={(e) => handleChange(e)}
+              data-testid="dropdown"
             >
               <Dropdown.Toggle
                 className={styles.dropDownToggleBtn}
                 variant="default"
+                data-testid="defaultLang"
               >
                 {defaultTranslateLang}
               </Dropdown.Toggle>
 
-              <Dropdown.Menu>
-                <Dropdown.Item eventKey={["English", "en"]}>
+              <Dropdown.Menu data-testid="dropdownContainer">
+                <Dropdown.Item
+                  eventKey={["English", "en"]}
+                  data-testid="english"
+                >
                   English
                 </Dropdown.Item>
-                <Dropdown.Item eventKey={["Français", "fr"]}>
+                <Dropdown.Item
+                  eventKey={["Français", "fr"]}
+                  data-testid="french"
+                >
                   Français
                 </Dropdown.Item>
-                <Dropdown.Item eventKey={["Deutsch", "de"]}>
+                <Dropdown.Item eventKey={["Deutsch", "de"]} data-testid="dutch">
                   Deutsch
                 </Dropdown.Item>
-                <Dropdown.Item eventKey={["Español", "es"]}>
+                <Dropdown.Item
+                  eventKey={["Español", "es"]}
+                  data-testid="spanish"
+                >
                   Español
                 </Dropdown.Item>
-                <Dropdown.Item eventKey={["日本語", "ja"]}>
+                <Dropdown.Item
+                  eventKey={["日本語", "ja"]}
+                  data-testid="japanese"
+                >
                   日本語
                 </Dropdown.Item>
-                <Dropdown.Item eventKey={["Português", "pt"]}>
+                <Dropdown.Item
+                  eventKey={["Português", "pt"]}
+                  data-testid="portuguese"
+                >
                   Português
                 </Dropdown.Item>
-                <Dropdown.Item eventKey={["中國人", "zh"]}>
+                <Dropdown.Item
+                  eventKey={["中國人", "zh"]}
+                  data-testid="chinese"
+                >
                   中國人
                 </Dropdown.Item>
               </Dropdown.Menu>
